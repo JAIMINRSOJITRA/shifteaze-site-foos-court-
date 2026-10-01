@@ -2376,7 +2376,7 @@ body.is-mob { background: #EEF0FB; }
       const VADMIN_MENU = [
         { label: 'Dashboard', r: 'vdash' },
         { label: 'People', r: 'vpeople' },
-        { label: 'Guests', r: 'guestview', items: [['guestview', 'View Guests'], ['guestadd', 'Add Guest']] },
+        { label: 'Guests', r: 'guestview' },
         { label: 'Transactions', r: 'vhistory' },
         { label: 'Weekly menu', r: 'vmenu' },
         { label: 'Billing', r: 'vbill' }
@@ -2391,7 +2391,7 @@ body.is-mob { background: #EEF0FB; }
       ];
       const ROUTES = {
         admin: ['home', 'dashboard', 'tx', 'log', 'sim', 'vendors', 'vendor', 'mealtypes', 'shifts', 'map', 'employees', 'guests', 'guestadd', 'guestview', 'roster', 'leaves', 'ext', 'billing', 'vmenu', 'foodadmin'],
-        vadmin: ['vdash', 'vpeople', 'vguests', 'guestadd', 'guestview', 'vhistory', 'vmenu', 'vbill'],
+        vadmin: ['vdash', 'vpeople', 'vguests', 'guestview', 'vhistory', 'vmenu', 'vbill'],
         counter: ['counter', 'cserved'],
         employee: ['m', 'mscan', 'mresult', 'mmeals', 'mmenu', 'mprofile']
       };
@@ -3524,27 +3524,17 @@ body.is-mob { background: #EEF0FB; }
         }).sort((a, b) => a.from < b.from ? 1 : -1);
         const tabs = [['all', 'All Guests'], ['active', 'Active Today'], ['entry', 'Entry Log'], ['exit', 'Exit Log']];
         const txByGuest = gid => db.transactions.filter(t => t.guest === gid && t.state === 'done');
-        return A.ph('View Guests', '', `<button class="btn btn-primary" data-act="go" data-to="guestadd">+ Add Guest</button>`, {}) +
+        return A.ph('View Guests', '', '', {}) +
         `<div class="panel" style="margin-bottom:16px">
   <div class="panel-h"><h2>Filter Guest Records</h2></div>
-  <div class="o-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;align-items:end">
+  <div class="o-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end">
     <label class="field"><span>Site</span>
       <select id="gview-site" data-ch="gviewSite">
         <option value="">All sites</option>
         ${sites.map(s => `<option value="${esc(s.id)}" ${f.site === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}
       </select></label>
-    <label class="field"><span>Vendor / Canteen</span>
-      <select id="gview-vendor" data-ch="gviewVendor">
-        <option value="">All canteens</option>
-        ${vendors.map(v => `<option value="${esc(v.id)}" ${f.vendor === v.id ? 'selected' : ''}>${esc(v.name)}</option>`).join('')}
-      </select></label>
     <label class="field"><span>Date</span>
       <input type="date" id="gview-date" value="${f.date}" data-ch="gviewDate"></label>
-    <label class="field"><span>Canteen Type</span>
-      <select id="gview-canteenType" data-ch="gviewCanteenType">
-        <option value="">All types</option>
-        ${canteenTypes.map(t => `<option value="${t}" ${f.canteenType === t ? 'selected' : ''}>${t}</option>`).join('')}
-      </select></label>
   </div>
 </div>
 <div class="panel">
@@ -3600,7 +3590,7 @@ body.is-mob { background: #EEF0FB; }
         const paid = txRows.filter(t => t.status !== 'chargeable').length;
         const chg = txRows.filter(t => t.status === 'chargeable').length;
         const rev = txRows.filter(t => t.status === 'chargeable').reduce((s, t) => s + (t.rate || 0), 0);
-        return A.ph('Food Admin', '', `<button class="btn btn-primary" data-act="go" data-to="guestadd">+ Add Guest</button><button class="btn" data-act="go" data-to="guestview" style="margin-left:8px">View Guests</button>`, {}) +
+        return A.ph('Food Admin', '', `<button class="btn btn-primary" data-act="go" data-to="guestview">View Guests</button>`, {}) +
         `<div class="panel" style="margin-bottom:16px">
   <div class="panel-h"><h2>Admin Filters</h2></div>
   <div class="o-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end">

@@ -3637,7 +3637,7 @@
       ];
       const ROUTES = {
         admin: ['home', 'dashboard', 'tx', 'log', 'sim', 'vendors', 'vendor', 'mealtypes', 'shifts', 'map', 'employees', 'guests', 'guestadd', 'guestview', 'roster', 'leaves', 'ext', 'billing', 'vmenu', 'foodadmin'],
-        vadmin: ['vdash', 'vpeople', 'vguests', 'guestadd', 'guestview', 'vhistory', 'vmenu', 'vbill'],
+        vadmin: ['vdash', 'vpeople', 'vguests', 'guestview', 'vhistory', 'vmenu', 'vbill'],
         counter: ['counter', 'cserved'],
         employee: ['m', 'mscan', 'mresult', 'mmeals', 'mmenu', 'mprofile']
       };
@@ -4835,7 +4835,7 @@
         const paid = txRows.filter(t => t.status !== 'chargeable').length;
         const chg = txRows.filter(t => t.status === 'chargeable').length;
         const rev = txRows.filter(t => t.status === 'chargeable').reduce((s, t) => s + (t.rate || 0), 0);
-        return A.ph('Food Admin', '', `<button class="btn btn-primary" data-act="go" data-to="guestadd">+ Add Guest</button><button class="btn" data-act="go" data-to="guestview" style="margin-left:8px">View Guests</button>`, {}) +
+        return A.ph('Food Admin', '', `<button class="btn btn-primary" data-act="go" data-to="guestview">View Guests</button>`, {}) +
           `<div class="panel" style="margin-bottom:16px">
   <div class="panel-h"><h2>Admin Filters</h2></div>
   <div class="o-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end">
