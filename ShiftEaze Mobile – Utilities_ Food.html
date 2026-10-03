@@ -1158,7 +1158,7 @@ a.row:hover { background: transparent; }
 .kv b { font-weight: 600; text-align: right; }
 
 /* Stats & Menu */
-.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .stats div { background: var(--card); box-shadow: var(--shadow); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; }
 .stats b { font-size: 20px; }
 .stats small { font-size: 12px; color: var(--ink-3); }
@@ -2131,7 +2131,7 @@ S.meals = () => {
   const failed = DB.scanLog.filter(l => l.emp === e.id && l.date === n.date).sort((a, b) => b.min - a.min);
   const badge = t => t.state === 'cancelled' ? pill('Cancelled') : t.status === 'chargeable' ? pill(money(t.rate), 'warn') : pill('Company', 'good');
   return page('My meals', '#/food', `<div style="display:flex;justify-content:space-between;align-items:center"><b>${FU.MONTHS[+mm - 1]} ${y}</b></div>
-  <div class="stats"><div><b>${m.length}</b><small>Meals</small></div><div><b>${m.length - chg.length}</b><small>Company-paid</small></div><div><b>${money(chg.reduce((s, t) => s + t.rate, 0))}</b><small>Paid by you</small></div></div>
+  <div class="stats"><div><b>${m.length}</b><small>Meals</small></div><div><b>${m.length - chg.length}</b><small>Company-paid</small></div></div>
   ${failed.length ? `<h3 class="dh">Not served today</h3><section class="card tight">${failed.map((l, i) => `<div class="row ${i === 0 ? 'first' : ''}"><span class="lead ${l.result === 'blocked' ? 'bad' : 'neu'}">${l.result === 'blocked' ? I.x(18) : I.alert(18)}</span><div class="g"><b>${hhmm(l.min)}, ${esc(l.vendor ? E.vendor(l.vendor).name : 'Unknown QR')}</b><small>${esc(l.message)}</small></div></div>`).join('')}</section>` : ''}
   ${days.length ? days.map(d => `<h3 class="dh">${d === n.date ? 'Today' : d === addDays(n.date, -1) ? 'Yesterday' : weekday(d) + ' ' + fmtDay(d)}</h3><section class="card tight">${mine.filter(t => t.mealDate === d).map((t, i) => `<a class="row ${i === 0 ? 'first' : ''}" href="#/meal/${t.id}"><span class="lead ${t.status === 'chargeable' ? 'warn' : ''}">${esc(E.meal(t.meal).code)}</span><div class="g"><b style="${t.state === 'cancelled' ? 'text-decoration:line-through;color:var(--ink-3)' : ''}">${esc(E.meal(t.meal).name)}, ${hhmm(t.min)}</b><small>${esc(E.vendor(t.vendor).name)}, ${t.ref}</small></div>${badge(t)}</a>`).join('')}</section>`).join('') : `<div class="card empty"><h2>No meals yet</h2><p>Meals you scan appear here.</p></div>`}`, { small: 'Food' });
 };

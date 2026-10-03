@@ -597,12 +597,13 @@
     }
 
     .o-cp {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 600px) minmax(0, 1fr);
+      display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px 18px;
       margin: 0 -20px 20px;
-      padding: 14px 20px;
+      padding: 12px 20px;
       background: var(--hdr);
       border-bottom: 1px solid var(--line);
     }
@@ -616,21 +617,25 @@
     .o-cp-l {
       display: flex;
       align-items: center;
-      gap: 12px;
-      min-width: 0;
+      gap: 14px;
       flex-wrap: wrap;
+      min-width: 0;
     }
 
     .o-cp-btns {
       display: flex;
+      align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .o-cp-c {
       display: flex;
       align-items: center;
       gap: 8px;
-      min-width: 0;
+      flex: 1;
+      max-width: 480px;
+      min-width: 240px;
     }
 
     .o-cp-r {
@@ -638,6 +643,8 @@
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
+      margin-left: auto;
     }
 
     .bc {
@@ -770,6 +777,258 @@
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 16px;
+    }
+
+    .vendor-pick {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .vendor-opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: 13.5px;
+      color: var(--ink);
+    }
+
+    .vendor-opt:hover {
+      background: #F5F4FA;
+      border-color: var(--line-2);
+    }
+
+    .vendor-opt.on {
+      background: rgba(67, 48, 150, 0.04);
+      border-color: var(--pri);
+      box-shadow: 0 0 0 1px var(--pri);
+    }
+
+    .vendor-opt input[type="radio"] {
+      margin: 0;
+      width: 17px;
+      height: 17px;
+      accent-color: var(--pri);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .vendor-opt b {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-block;
+    }
+
+    .vendor-opt .badge {
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    /* Simple, clean 24-hour day ribbon timeline */
+    .ribbon {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-width: 660px;
+      margin-top: 4px;
+    }
+
+    .rb-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 30px;
+    }
+
+    .rb-name {
+      width: 175px;
+      min-width: 175px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      font-size: 12px;
+      color: #1e293b;
+    }
+
+    .rb-name b {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .rb-name small {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 1px;
+    }
+
+    .rb-track {
+      position: relative;
+      flex: 1;
+      height: 26px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .rb-bar {
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 4px;
+      box-sizing: border-box;
+      cursor: default;
+      user-select: none;
+    }
+
+    .rb-bar.duty {
+      background: #4f46e5;
+      color: #ffffff;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .rb-bar.leave {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      font-weight: 600;
+      z-index: 3;
+    }
+
+    .rb-bar.win {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      z-index: 1;
+    }
+
+    .rb-bar.ok {
+      background: #059669;
+      color: #ffffff;
+      font-weight: 600;
+      z-index: 4;
+    }
+
+    .rb-now {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ef4444;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .rb-axis {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+      padding-top: 4px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .rb-axis > div:first-child {
+      width: 175px;
+      min-width: 175px;
+      flex-shrink: 0;
+    }
+
+    .rb-ticks {
+      position: relative;
+      flex: 1;
+      height: 18px;
+      font-size: 10.5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #64748b;
+    }
+
+    .rb-ticks span {
+      position: absolute;
+      transform: translateX(-50%);
+      top: 1px;
+    }
+
+    .rb-ticks span:first-child {
+      transform: translateX(0);
+    }
+
+    .rb-ticks span:last-child {
+      transform: translateX(-100%);
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 8px 2px;
+      background: transparent;
+      border: none;
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: #475569;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    .legend i.lg-duty {
+      background: #4f46e5;
+    }
+
+    .legend i.lg-leave {
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+    }
+
+    .legend i.lg-win {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+    }
+
+    .legend i.lg-ok {
+      background: #059669;
+    }
+
+    .legend i.lg-now {
+      background: #ef4444;
+      width: 2px;
+      height: 12px;
+      border-radius: 0;
     }
 
     .stack {
@@ -954,6 +1213,24 @@
       cursor: not-allowed;
     }
 
+    .btn-sm {
+      height: 28px;
+      padding: 0 10px;
+      font-size: 12px;
+      border-radius: 8px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-hover);
+      border-color: var(--border-focus);
+    }
+
     .btn-lg {
       height: 52px;
       padding: 0 24px;
@@ -1047,6 +1324,19 @@
     .field .help {
       font-size: 12px;
       color: var(--ink-3);
+    }
+
+    .list.o-edit td input,
+    .list.o-edit td select {
+      width: 100%;
+      min-width: 80px;
+    }
+
+    .qr-card {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     /* Switch control */
@@ -2851,7 +3141,7 @@
 
     .m-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       margin-bottom: 12px;
     }
@@ -2934,14 +3224,21 @@
 
       .o-cp,
       .o-cp:not(.flat) {
-        grid-template-columns: minmax(0, 1fr);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
       }
 
       .o-cp-l {
         flex-wrap: wrap;
       }
 
+      .o-cp-c {
+        max-width: 100%;
+      }
+
       .o-cp-r {
+        margin-left: 0;
         justify-content: flex-start;
       }
     }
@@ -3148,6 +3445,66 @@
         E.windowAbs = (D, from, to) => { const b = dayNum(D) * 1440; return to <= from ? [b + from, b + 1440 + to] : [b + from, b + to]; };
         E.shiftText = id => { const s = E.shift(id); return s ? s.code + ' ' + hhmm(s.start) + '–' + hhmm(s.end) : id; };
 
+        E.attendanceRecord = (emp, d) => db.attendance ? db.attendance.find(l => l.emp === emp && l.date === d) : null;
+        E.punchCheck = (empId, date, at, sRange) => {
+          const line = E.rosterLine(empId, date);
+          if (!line || line.shift === 'WO' || !E.shift(line.shift)) {
+            return { status: 'not_rostered', absentFlag: false, punchIn: null, detail: 'Not rostered on shift' };
+          }
+          const s = E.shift(line.shift);
+          const r = sRange || E.shiftRange(line);
+          const att = E.attendanceRecord(empId, date);
+          const punchIn = (att && att.punchIn != null) ? att.punchIn : null;
+          if (punchIn != null) {
+            return { status: 'present', absentFlag: false, punchIn, detail: 'Punched in at ' + hhmm(punchIn) + ' (' + s.code + ')' };
+          }
+          if (!r) {
+            return { status: 'pending', absentFlag: false, punchIn: null, detail: 'No shift timing available' };
+          }
+          const shiftStart = r[0];
+          const GRACE = 30; // 30 mins grace window after shift start
+          if (at < shiftStart) {
+            return { status: 'pending', absentFlag: false, punchIn: null, detail: 'Shift ' + s.code + ' starts at ' + hhmm(s.start) + ' (Punch pending)' };
+          }
+          if (at >= shiftStart && at < shiftStart + GRACE) {
+            return { status: 'pending', absentFlag: false, punchIn: null, detail: 'Punch-in pending: within ' + GRACE + 'm grace period after ' + hhmm(s.start) + ' shift start' };
+          }
+          // Shift active/ended, past grace period, and no biometric punch-in recorded:
+          return { status: 'absent', absentFlag: true, punchIn: null, detail: 'Absent: Rostered for ' + s.code + ' (' + hhmm(s.start) + '–' + hhmm(s.end) + '), no punch-in recorded (past ' + GRACE + 'm grace)' };
+        };
+
+        E.validateKronosAttendance = (targetDate, targetEmpId) => {
+          const n = (typeof root !== 'undefined' && root.App && root.App.now) ? root.App.now() : istNow();
+          const date = targetDate || n.date;
+          const nowAt = (date === n.date ? n.min : 1440) + dayNum(date) * 1440;
+          let resolvedCount = 0, confirmedAbsentCount = 0, validatedCount = 0;
+
+          const txs = db.transactions.filter(t => t.consumer === 'employee' && (!date || t.mealDate === date) && (!targetEmpId || t.emp === targetEmpId) && t.state === 'done');
+
+          txs.forEach(t => {
+            const oldAbsent = !!t.absentFlag;
+            const pCheck = E.punchCheck(t.emp, t.mealDate, nowAt);
+            
+            t.punchStatus = pCheck.status;
+            t.absentFlag = pCheck.absentFlag;
+            t.kronosValidated = true;
+            t.kronosValidatedAt = new Date().toISOString();
+
+            if (oldAbsent && !pCheck.absentFlag) {
+              resolvedCount++;
+              t.kronosNote = `Resolved by Kronos: ${pCheck.detail || 'Biometric punch verified'}`;
+            } else if (pCheck.absentFlag) {
+              confirmedAbsentCount++;
+              t.kronosNote = `Confirmed absent by Kronos: ${pCheck.detail}`;
+            } else {
+              t.kronosNote = `Verified by Kronos: ${pCheck.detail}`;
+            }
+            validatedCount++;
+          });
+
+          return { date, validatedCount, resolvedCount, confirmedAbsentCount };
+        };
+
         E.freeDay = (emp, D) => {
           const lv = db.leaves.find(l => l.emp === emp && l.date === D && l.kind === 'full' && l.state === 'approved');
           if (lv) return { free: true, why: 'Approved full-day leave', leave: lv };
@@ -3234,6 +3591,24 @@
           const dr = E.dayRanges(du.ranges, date);
           const tDuty = { ok: null, label: 'On duty at scan time', detail: cover ? 'Yes, duty ' + rangeLabel(cover, date) : 'No' + (dr.length ? ', duty ' + dr.map(x => rangeLabel(x, date)).join(', ') : '') };
           trace.push(tFree);
+          const line = E.rosterLine(emp.id, date);
+          const sRange = (line && line.shift !== 'WO' && E.shift(line.shift)) ? E.shiftRange(line) : null;
+          const pCheck = E.punchCheck(emp.id, date, at, sRange);
+          res.absentFlag = pCheck.absentFlag;
+          res.punchStatus = pCheck.status;
+          res.punchIn = pCheck.punchIn;
+          trace.push({
+            ok: pCheck.status === 'present' ? true : pCheck.status === 'pending' ? null : false,
+            label: 'Shift attendance punch',
+            detail: pCheck.detail
+          });
+          if (pCheck.absentFlag) {
+            trace.push({
+              ok: false,
+              label: 'Absent flag maintained',
+              detail: 'Employee rostered but did not punch into shift. Flagged Absent for HR payroll audit.'
+            });
+          }
           if (!v.atSite) {
             if (fd.free) { tFree.ok = true; return done('entitled', 'FREE_DAY'); }
             trace.push(tDuty);
@@ -3281,6 +3656,7 @@
             vendor: v.id, site: site.id, meal: res.meal, date: res.date, min: res.min, mealDate: res.date,
             vendorAtSite: v.atSite, status: res.result, code: res.code, rate: res.mealLine.rate,
             source: res.kind === 'guest' || res.manual ? 'vendor_mark' : 'qr_scan', rosterLine, shift, dutyStart, dutyEnd,
+            absentFlag: !!res.absentFlag, punchStatus: res.punchStatus || (res.kind === 'guest' ? null : 'n/a'),
             markedBy: by || null, state: 'done', cancelReason: null
           };
           db.transactions.push(tx);
@@ -3372,7 +3748,7 @@
         const r = prng(20260929);
         const T = toMin;
         const db = {
-          version: 6, seededFor: D, seq: {},
+          version: 8, seededFor: D, seq: {},
           settings: { clock: { live: true, date: D, min: nowMin } },
           admins: [{ id: 'adm-1', name: 'Admin', email: 'admin@shifteaze.in', password: 'admin123' }],
           sites: [{ id: 'MUN', code: 'MUN', name: 'Mundra Port' }, { id: 'DHJ', code: 'DHJ', name: 'Dahej Port' }],
@@ -3383,7 +3759,7 @@
             { id: 'C', code: 'C', name: 'Shift C', start: T('22:00'), end: T('06:00') },
             { id: 'G', code: 'G', name: 'General', start: T('09:00'), end: T('18:00') }
           ],
-          vendors: [], employees: [], roster: [], leaves: [], extensions: [], guests: [], guestUploads: [], menus: [], transactions: [], scanLog: [],
+          vendors: [], employees: [], roster: [], attendance: [], leaves: [], extensions: [], guests: [], guestUploads: [], menus: [], transactions: [], scanLog: [],
           map: { rows: [], sigs: {} }
         };
         const nid = p => { db.seq[p] = (db.seq[p] || 0) + 1; return p + '-' + db.seq[p]; };
@@ -3436,12 +3812,37 @@
         db.extensions.push({ id: nid('ext'), emp: E0[6].id, date: D, kind: 'Extension', from: T('14:00'), to: T('15:00'), state: 'approved', note: 'Vessel berthing delay' });
         db.extensions.push({ id: nid('ext'), emp: E0[1].id, date: D, kind: 'OT', from: T('12:00'), to: T('14:00'), state: 'approved', note: 'Pre-shift OT' });
 
-        const G = (name, mobile, org, host, f, t, meals) => db.guests.push({ id: nid('gst'), code: 'G-' + String((db.seq.gcode = (db.seq.gcode || 0) + 1)).padStart(4, '0'), name, mobile, org, host, from: addDays(D, f), to: addDays(D, t), meals, uploadId: null });
-        G('Henrik Larsen', '9825011234', 'Maersk Line', E0[0].id, -1, 2, ['BF', 'LU', 'DN']);
-        G('Ananya Rao', '9909123456', 'Internal audit team', E0[5].id, 0, 0, ['LU', 'SN']);
-        G('Kenji Watanabe', '9016543210', 'Konecranes service', E0[6].id, -2, 4, ['BF', 'LU', 'SN', 'DN']);
-        G('Priya Menon', '9737001122', 'Customs liaison', null, -10, -5, ['LU']);
-        G('Tomas Novak', '9824776655', 'Liebherr commissioning', E0[9].id, 3, 5, ['BF', 'LU', 'DN']);
+        for (let k = -8; k <= 0; k++) {
+          const d = addDays(D, k);
+          db.employees.forEach(e => {
+            const l = db.roster.find(x => x.emp === e.id && x.date === d);
+            if (!l || l.shift === 'WO') return;
+            const sh = db.shifts.find(s => s.id === l.shift);
+            if (!sh) return;
+            // Test cases:
+            // MUN-10296 (Arjun Solanki, CT2 crane operator) is rostered Shift A on day D, but absent (no punch)
+            if (e.code === 'MUN-10296' && d === D) {
+              db.attendance.push({ id: nid('att'), emp: e.id, date: d, shift: l.shift, punchIn: null, punchOut: null, status: 'absent', note: 'No biometric punch-in' });
+            } else if (e.code === 'MUN-10308' && d === D) {
+              // Farhan Memon (Shift B starting 14:00) is pending
+              db.attendance.push({ id: nid('att'), emp: e.id, date: d, shift: l.shift, punchIn: null, punchOut: null, status: 'pending', note: 'Punch-in pending' });
+            } else {
+              const roll = r();
+              if (roll < 0.88) {
+                db.attendance.push({ id: nid('att'), emp: e.id, date: d, shift: l.shift, punchIn: sh.start + 2 + Math.floor(roll * 8), punchOut: (d === D && nowMin < sh.end) ? null : sh.end + 5, status: 'present', note: 'Biometric verified' });
+              } else {
+                db.attendance.push({ id: nid('att'), emp: e.id, date: d, shift: l.shift, punchIn: null, punchOut: null, status: 'absent', note: 'Absent (no biometric punch)' });
+              }
+            }
+          });
+        }
+
+        const G = (name, mobile, org, host, f, t, meals, purpose = 'Official Visit', aadhaar = '9876 5432 1012') => db.guests.push({ id: nid('gst'), code: 'G-' + String((db.seq.gcode = (db.seq.gcode || 0) + 1)).padStart(4, '0'), name, mobile, org, host, purpose, aadhaar, photo: '', from: addDays(D, f), to: addDays(D, t), meals, uploadId: null });
+        G('Henrik Larsen', '9825011234', 'Maersk Line', E0[0].id, -1, 2, ['BF', 'LU', 'DN'], 'Vessel & Terminal Inspection', '4589 1234 5678');
+        G('Ananya Rao', '9909123456', 'Internal audit team', E0[5].id, 0, 0, ['LU', 'SN'], 'Financial & Operational Audit', '6789 1234 9012');
+        G('Kenji Watanabe', '9016543210', 'Konecranes service', E0[6].id, -2, 4, ['BF', 'LU', 'SN', 'DN'], 'Quay Crane Servicing', '3456 7890 1234');
+        G('Priya Menon', '9737001122', 'Customs liaison', E0[1].id, -10, -5, ['LU'], 'Customs Documentation Liaison', '7890 1234 5678');
+        G('Tomas Novak', '9824776655', 'Liebherr commissioning', E0[9].id, 3, 5, ['BF', 'LU', 'DN'], 'Equipment Commissioning', '5678 9012 3456');
 
         const menuItems = {
           BF: ['Poha, jalebi, masala chai', 'Idli sambar, coffee', 'Thepla, curd, tea', 'Upma, banana, tea', 'Aloo paratha, curd', 'Methi thepla, tea', 'Sandwich, tea'],
@@ -3504,7 +3905,7 @@
     (function () {
       'use strict';
       const { pad, toMin, hhmm, dayNum, dateOf, addDays, fmtDate, fmtDay, weekday, mondayOf, absLabel, rangeLabel, money, istNow, createEngine, buildSeed, token } = FU;
-      const KEY = 'shifteaze_food_utility_v6', SKEY = 'shifteaze_food_session_v6';
+      const KEY = 'shifteaze_food_utility_v8', SKEY = 'shifteaze_food_session_v8';
       const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
       const App = window.App = { UI: { f: {}, sel: {} } };
       const UI = App.UI;
@@ -3514,7 +3915,7 @@
       function seedFresh() { const n = istNow(); DB = buildSeed(n.date, n.min); E = createEngine(DB); save(); }
       function load() {
         const d = read(KEY);
-        if (d && d.version === 6 && Array.isArray(d.transactions)) { DB = d; E = createEngine(DB); } else seedFresh();
+        if (d && d.version === 8 && Array.isArray(d.transactions) && Array.isArray(d.attendance)) { DB = d; E = createEngine(DB); } else seedFresh();
         App.S = read(SKEY);
       }
       function save() { store(KEY, DB); }
@@ -3612,11 +4013,11 @@
       /* ---------- routing and shell ---------- */
       const ADMIN_MENU = [
         { label: 'Dashboard', r: 'dashboard' },
-        { label: 'Operations', items: [['tx', 'Live transactions'], ['log', 'Blocked and rejected scans'], ['sim', 'Scan test console']] },
+        { label: 'Operations', items: [['tx', 'Live transactions'], ['log', 'Blocked and rejected scans']] },
         { label: 'Masters', items: [['vendors', 'Vendors'], ['mealtypes', 'Meal types'], ['shifts', 'Shift master'], ['vmenu', 'Weekly menu']] },
         { label: 'People', items: [['employees', 'Employees']] },
         { label: 'Guests', items: [['guestview', 'View Guests'], ['guestadd', 'Add Guest']] },
-        { label: 'Roster data', items: [['roster', 'Roster'], ['leaves', 'Leave'], ['ext', 'OT and extensions']], hint: 'Read from ShiftEaze. Editable here for testing.' },
+        { label: 'Roster data', items: [['roster', 'Roster'], ['attendance', 'Attendance & Punches'], ['leaves', 'Leave'], ['ext', 'OT and extensions']], hint: 'Read from ShiftEaze. Editable here for testing.' },
         { label: 'Reporting', items: [['billing', 'Monthly billing']] }
       ];
       const VADMIN_MENU = [
@@ -3627,7 +4028,7 @@
         { label: 'Weekly menu', r: 'vmenu' },
         { label: 'Billing', r: 'vbill' }
       ];
-      const COUNTER_MENU = [{ label: 'Guests', r: 'counter' }, { label: 'Served today', r: 'cserved' }];
+      const COUNTER_MENU = [{ label: 'Guests', r: 'counter' }, { label: 'Live list', r: 'clive' }, { label: 'Served today', r: 'cserved' }];
       const EMPLOYEE_MENU = [
         { label: "Today's Meals", r: 'm' },
         { label: 'Scan Canteen QR', r: 'mscan' },
@@ -3636,9 +4037,9 @@
         { label: 'My Profile', r: 'mprofile' }
       ];
       const ROUTES = {
-        admin: ['home', 'dashboard', 'tx', 'log', 'sim', 'vendors', 'vendor', 'mealtypes', 'shifts', 'map', 'employees', 'guests', 'guestadd', 'guestview', 'roster', 'leaves', 'ext', 'billing', 'vmenu', 'foodadmin'],
+        admin: ['home', 'dashboard', 'tx', 'log', 'sim', 'vendors', 'vendor', 'mealtypes', 'shifts', 'map', 'employees', 'guests', 'guestadd', 'guestview', 'roster', 'attendance', 'leaves', 'ext', 'billing', 'vmenu', 'foodadmin'],
         vadmin: ['vdash', 'vpeople', 'vguests', 'guestview', 'vhistory', 'vmenu', 'vbill'],
-        counter: ['counter', 'cserved'],
+        counter: ['counter', 'clive', 'cserved'],
         employee: ['m', 'mscan', 'mresult', 'mmeals', 'mmenu', 'mprofile']
       };
       const HOME = { admin: 'home', vadmin: 'vdash', counter: 'counter', employee: 'm' };
@@ -3702,7 +4103,7 @@
         o = o || {};
         const bc = /#\/vendors"/.test(crumbs || '') ? '<a href="#/vendors">Vendors</a>' : '';
         const sb = searchBar(o);
-        return `<div class="o-cp${sb ? '' : ' flat'}"><div class="o-cp-l">${actions ? `<div class="o-cp-btns">${actions}</div>` : ''}<h1 class="bc">${bc ? `<span class="bc-p">${bc}</span><span class="bc-sep">/</span>` : ''}<span class="bc-cur">${title}</span></h1></div>${sb ? `<div class="o-cp-c">${sb}</div>` : ''}<div class="o-cp-r">${o.pager ? `<span class="o-pager">${o.pager}</span>` : ''}${o.right || ''}</div></div>`;
+        return `<div class="o-cp${sb ? '' : ' flat'}"><div class="o-cp-l"><h1 class="bc">${bc ? `<span class="bc-p">${bc}</span><span class="bc-sep">/</span>` : ''}<span class="bc-cur">${title}</span></h1>${actions ? `<div class="o-cp-btns">${actions}</div>` : ''}</div>${sb ? `<div class="o-cp-c">${sb}</div>` : ''}<div class="o-cp-r">${o.pager ? `<span class="o-pager">${o.pager}</span>` : ''}${o.right || ''}</div></div>`;
       };
       function siteSwitch() {
         const s = scope(), cur = s.site ? E.site(s.site) : null;
@@ -3780,7 +4181,7 @@
       }, 30000);
 
       /* ---------- login ---------- */
-      const DEMO_EMP = [['MUN-10231', 'shift A, half-day leave'], ['MUN-10244', 'shift B, OT'], ['MUN-10252', 'night shift C'], ['MUN-10267', 'on leave'], ['MUN-10378', 'not rostered'], ['MUN-10347', 'food off']];
+      const DEMO_EMP = [['MUN-10231', 'shift A, half-day leave'], ['MUN-10296', 'shift A, absent (no punch)'], ['MUN-10244', 'shift B, OT'], ['MUN-10252', 'night shift C'], ['MUN-10267', 'on leave'], ['MUN-10378', 'not rostered'], ['MUN-10347', 'food off']];
       App.pages.login = () => {
         const ad = DB.admins[0];
         return `<div class="login">
@@ -3897,18 +4298,25 @@
     <button class="tile new" data-act="go" data-to="dashboard"><span class="ic"><span style="background:#563c9d">${IC.plate}</span><span class="tag">New</span></span>Food Utility</button>
     ${apps.map(a => tile(a[0], a[1])).join('')}</div></div>`;
       };
-      ACT.otherApp = a => toast(a.dataset.name + ' is an existing ShiftEaze app and is not part of this prototype.');
+      ACT.otherApp = a => {
+        if (a.dataset.name === 'Kronos Attendance' || a.dataset.name === 'Attendances') {
+          A.go('attendance');
+          toast('Opened Kronos Biometric Attendance & Punches verification.', 'good');
+          return;
+        }
+        toast(a.dataset.name + ' is an existing ShiftEaze app and is not part of this prototype.');
+      };
 
       /* ---------- admin scope: site and vendor ---------- */
       function scope() { const s = DB.settings.scope || (DB.settings.scope = { site: '', vendor: '' }); if (s.vendor && !E.vendor(s.vendor)) s.vendor = ''; return s; }
       function scopeSite() { const s = scope(); return s.vendor ? E.vendor(s.vendor).siteId : s.site; }
       function scopeVendors() { const s = scope(); return DB.vendors.filter(v => (!s.site || v.siteId === s.site) && (!s.vendor || v.id === s.vendor)); }
       function scopeLabel() { const s = scope(); return s.vendor ? E.vendor(s.vendor).name : s.site ? E.site(s.site).name : 'All sites and vendors'; }
-      const SCOPED = ['tx', 'log', 'vendors', 'map', 'billing', 'employees', 'roster', 'leaves', 'ext', 'sim'];
+      const SCOPED = ['tx', 'log', 'vendors', 'map', 'billing', 'employees', 'roster', 'attendance', 'leaves', 'ext'];
       function scopeBar(r) {
         if (!SCOPED.includes(r)) return '';
         const s = scope(), vlist = DB.vendors.filter(v => !s.site || v.siteId === s.site);
-        const siteOnly = ['employees', 'roster', 'leaves', 'ext'].includes(r);
+        const siteOnly = ['employees', 'roster', 'attendance', 'leaves', 'ext'].includes(r);
         return `<div class="scope" role="region" aria-label="Site and vendor filter"><div class="scope-in">
     <label class="scope-l" for="sc-site">Site</label><select id="sc-site" class="${s.site ? 'set' : ''}" data-ch="scopeSite">${siteOpts(s.site, true)}</select>
     <label class="scope-l" for="sc-vendor">Vendor</label><select id="sc-vendor" class="${s.vendor ? 'set' : ''}" data-ch="scopeVendor">${vendorOpts(s.vendor, true, vlist)}</select>
@@ -3927,29 +4335,44 @@
       /* ---------- admin dashboard ---------- */
       App.pages.dashboard = () => {
         const n = now();
-        const f = getF('dash', { site: '', vendor: '', date: n.date, vtype: '' });
+        const f = getF('dash', { site: '', vendor: '', period: 'FTD', date: n.date, from: n.date, to: n.date, vtype: '' });
+        if (!f.period) f.period = 'FTD';
+        if (f.period === 'FTD') { f.from = n.date; f.to = n.date; f.date = n.date; }
+        else if (f.period === 'MTD') { f.from = n.date.slice(0, 7) + '-01'; f.to = n.date; }
+        else if (f.period === 'YTD') { f.from = n.date.slice(0, 4) + '-01-01'; f.to = n.date; }
+        else if (f.period === 'custom') { f.from = f.from || n.date; f.to = f.to || n.date; }
+
         // Site → Vendor cascade (local to dashboard, independent of global scope bar)
         const allSites = DB.sites;
         const availVendors = DB.vendors.filter(v => v.active && (!f.site || v.siteId === f.site));
         const vs = availVendors.filter(v => (!f.vendor || v.id === f.vendor) && (!f.vtype || (f.vtype === 'at') === v.atSite));
         const site = f.site || scopeSite();
         const vIds = vs.map(v => v.id);
-        const txs = DB.transactions.filter(t => t.state === 'done' && t.mealDate === f.date && vIds.includes(t.vendor));
+        const txs = DB.transactions.filter(t => t.state === 'done' && t.mealDate >= f.from && t.mealDate <= f.to && vIds.includes(t.vendor));
         const ent = txs.filter(t => t.status === 'entitled'), chg = txs.filter(t => t.status === 'chargeable');
         const sum = a => a.reduce((s, t) => s + t.rate, 0);
-        const logs = DB.scanLog.filter(l => l.date === f.date && (!l.vendor || vIds.includes(l.vendor)));
+        const logs = DB.scanLog.filter(l => l.date >= f.from && l.date <= f.to && (!l.vendor || vIds.includes(l.vendor)));
         const ms = meals();
 
         const exp = ms.map(m => {
           let e = 0, g = 0;
           const siteList = site ? [site] : DB.sites.map(s => s.id);
-          siteList.forEach(s => { const x = E.expected(s, m.id, f.date, vIds); e += x.emp; });
-          g = DB.guests.filter(x => x.from <= f.date && f.date <= x.to && x.meals.includes(m.id)).length;
+          siteList.forEach(s => { const x = E.expected(s, m.id, n.date, vIds); e += x.emp; });
+          g = DB.guests.filter(x => x.from <= n.date && n.date <= x.to && x.meals.includes(m.id)).length;
           const served = txs.filter(t => t.meal === m.id).length;
           return { m, e, g, served };
         });
-        return ph('Food dashboard', 'Food Utility', `<button class="btn" data-act="go" data-to="sim">Open scan test console</button>`) + `
-  <div class="panel" style="margin-bottom:16px"><div class="filters" style="border-bottom:0;border-radius:var(--radius)">
+
+        const activeRangeLabel = f.period === 'FTD'
+          ? `Today: ${fmtDate(n.date)}`
+          : f.period === 'MTD'
+            ? `MTD: ${fmtDate(f.from)} – ${fmtDate(f.to)}`
+            : f.period === 'YTD'
+              ? `YTD: ${fmtDate(f.from)} – ${fmtDate(f.to)}`
+              : `Custom: ${fmtDate(f.from)} – ${fmtDate(f.to)}`;
+
+        return ph('Food dashboard', 'Food Utility') + `
+  <div class="panel" style="margin-bottom:16px"><div class="filters" style="border-bottom:0;border-radius:var(--radius);display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;padding:14px 16px">
     <label class="field"><span>Site</span><select id="dash-site" data-ch="dashSite">
       <option value="">All sites</option>
       ${allSites.map(s => `<option value="${esc(s.id)}" ${f.site === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}
@@ -3958,30 +4381,58 @@
       <option value="">All vendors</option>
       ${availVendors.map(v => `<option value="${esc(v.id)}" ${f.vendor === v.id ? 'selected' : ''}>${esc(v.name)}</option>`).join('')}
     </select></label>
-    <label class="field"><span>Date</span><input type="date" id="dash-date" data-f="dash.date" value="${f.date}"></label>
     <label class="field"><span>Canteen type</span><select id="dash-vt" data-f="dash.vtype">${opt('', 'All canteens', f.vtype)}${opt('at', 'At site (eat during shift)', f.vtype)}${opt('off', 'Off site (eat off duty)', f.vtype)}</select></label>
+    <div class="field" style="margin-bottom:0">
+      <span style="font-size:11px;font-weight:700;color:var(--ink-2);text-transform:uppercase;letter-spacing:0.4px">Period</span>
+      <div class="seg" role="tablist" style="margin:0;display:inline-flex">
+        <button type="button" role="tab" class="${f.period === 'FTD' ? 'on' : ''}" data-act="dashPeriod" data-p="FTD" style="font-size:12px;padding:5px 12px;font-weight:600">FTD</button>
+        <button type="button" role="tab" class="${f.period === 'MTD' ? 'on' : ''}" data-act="dashPeriod" data-p="MTD" style="font-size:12px;padding:5px 12px;font-weight:600">MTD</button>
+        <button type="button" role="tab" class="${f.period === 'YTD' ? 'on' : ''}" data-act="dashPeriod" data-p="YTD" style="font-size:12px;padding:5px 12px;font-weight:600">YTD</button>
+        <button type="button" role="tab" class="${f.period === 'custom' ? 'on' : ''}" data-act="dashPeriod" data-p="custom" style="font-size:12px;padding:5px 12px;font-weight:600">Custom Range</button>
+      </div>
+    </div>
+    ${f.period === 'custom' ? `
+      <label class="field"><span>From Date</span><input type="date" id="dash-from" data-ch="dashFrom" value="${f.from}"></label>
+      <label class="field"><span>To Date</span><input type="date" id="dash-to" data-ch="dashTo" value="${f.to}"></label>
+    ` : ''}
+    <div class="small muted" style="margin-left:auto;font-weight:600;display:flex;align-items:center;gap:5px;align-self:center;padding-top:14px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>${activeRangeLabel}</span>
+    </div>
   </div></div>
   <div class="kpis">
-    ${kpi('Meals served', txs.length, fmtDate(f.date))}
-    ${kpi('Company-paid', ent.length, money(sum(ent)), 'good')}
-    ${kpi('Chargeable', chg.length, money(sum(chg)) + ' collected by vendors', 'warn')}
-    ${kpi('Guests served', txs.filter(t => t.consumer === 'guest').length, DB.guests.filter(g => g.from <= f.date && f.date <= g.to).length + ' guests valid')}
+    ${kpi('Meals served', txs.length, activeRangeLabel)}
+    ${kpi('Entitled', ent.length, '', 'good')}
+    ${kpi('Guests served', txs.filter(t => t.consumer === 'guest').length, DB.guests.filter(g => g.from <= n.date && n.date <= g.to).length + ' guests active')}
     ${kpi('Blocked or rejected', logs.length, '<a href="#/log">Review scans</a>', logs.length ? 'bad' : '')}
   </div>
   ${!vs.length ? '<div class="banner info">No vendors match the site, vendor and canteen type chosen.</div>' : ''}
   <div class="grid2" style="margin-bottom:16px">
-    <div class="panel"><div class="panel-h"><h2>Meals by vendor</h2></div><div class="tbl-wrap"><table class="list cards"><thead><tr><th>Vendor</th><th>Type</th>${ms.map(m => `<th class="num">${esc(m.name)}</th>`).join('')}<th class="num">Chargeable</th></tr></thead><tbody>
-      ${vs.map(v => { const vt = txs.filter(t => t.vendor === v.id); return `<tr class="click" data-act="go" data-to="vendor/${v.id}"><td>${esc(v.name)}<div class="small muted">${esc(E.site(v.siteId).name)}</div></td><td>${typeBadge(v.atSite)}</td>${ms.map(m => { const has = v.meals.some(x => x.meal === m.id); return `<td class="num">${has ? vt.filter(t => t.meal === m.id).length : '<span class="faint">–</span>'}</td>`; }).join('')}<td class="num">${money(sum(vt.filter(t => t.status === 'chargeable')))}</td></tr>`; }).join('')}
-      <tr class="total"><td colspan="2">Total</td>${ms.map(m => `<td class="num">${txs.filter(t => t.meal === m.id).length}</td>`).join('')}<td class="num">${money(sum(chg))}</td></tr>
+    <div class="panel"><div class="panel-h"><h2>Meals by vendor</h2></div><div class="tbl-wrap"><table class="list cards"><thead><tr><th>Vendor</th><th>Type</th>${ms.map(m => `<th class="num">${esc(m.name)}</th>`).join('')}</tr></thead><tbody>
+      ${vs.map(v => { const vt = txs.filter(t => t.vendor === v.id); return `<tr class="click" data-act="go" data-to="vendor/${v.id}"><td>${esc(v.name)}<div class="small muted">${esc(E.site(v.siteId).name)}</div></td><td>${typeBadge(v.atSite)}</td>${ms.map(m => { const has = v.meals.some(x => x.meal === m.id); return `<td class="num">${has ? vt.filter(t => t.meal === m.id).length : '<span class="faint">–</span>'}</td>`; }).join('')}</tr>`; }).join('')}
+      <tr class="total"><td colspan="2">Total</td>${ms.map(m => `<td class="num">${txs.filter(t => t.meal === m.id).length}</td>`).join('')}</tr>
     </tbody></table></div></div>
-    <div class="panel"><div class="panel-h"><h2>Expected versus served</h2></div><div class="tbl-wrap"><table class="list cards"><thead><tr><th>Meal</th><th class="num">Employees</th><th class="num">Guests</th><th class="num">Served</th><th>Progress</th></tr></thead><tbody>
-      ${exp.map(x => { const tot = x.e + x.g, p = tot ? Math.min(100, Math.round(x.served / tot * 100)) : 0; return `<tr><td>${esc(x.m.name)}</td><td class="num">${x.e}</td><td class="num">${x.g}</td><td class="num">${x.served}</td><td><div class="meter" title="${p}% of expected"><i style="width:${p}%"></i></div></td></tr>`; }).join('')}
+    <div class="panel"><div class="panel-h"><h2>Expected versus served</h2></div><div class="tbl-wrap"><table class="list cards"><thead><tr><th>Meal</th><th class="num">Employees</th><th class="num">Guests</th><th class="num">Served</th></tr></thead><tbody>
+      ${exp.map(x => `<tr><td>${esc(x.m.name)}</td><td class="num">${x.e}</td><td class="num">${x.g}</td><td class="num">${x.served}</td></tr>`).join('')}
     </tbody></table></div><p class="more">Expected employees are opted in and have an eligible window at a canteen on their site, based on the day's roster, OT, extensions and leave. Guests can eat at any site.</p></div>
   </div>
   <div class="panel"><div class="panel-h"><h2>Latest transactions</h2><a href="#/tx" class="small">View all</a></div>${txTable(txs.slice().sort((a, b) => b.min - a.min).slice(0, 8), true)}</div>`;
       };
       // Cascade: clear vendor when site changes in dashboard filter
       CH.dashSite = function (t) { const f = getF('dash', {}); f.site = t.value; f.vendor = ''; render(); };
+      CH.dashFrom = function (t) { const f = getF('dash', {}); f.from = t.value; render(); };
+      CH.dashTo = function (t) { const f = getF('dash', {}); f.to = t.value; render(); };
+      ACT.dashPeriod = function (a) {
+        const p = a.dataset.p;
+        const f = getF('dash', {});
+        const n = now();
+        f.period = p;
+        if (p === 'FTD') { f.from = n.date; f.to = n.date; f.date = n.date; }
+        else if (p === 'MTD') { f.from = n.date.slice(0, 7) + '-01'; f.to = n.date; }
+        else if (p === 'YTD') { f.from = n.date.slice(0, 4) + '-01-01'; f.to = n.date; }
+        else if (p === 'custom') { f.from = f.from || n.date; f.to = f.to || n.date; }
+        render();
+      };
       function nextMeals(vs, min) {
         const up = [];
         vs.filter(v => v.active).forEach(v => v.meals.forEach(m => { if (m.start > min) up.push({ v, m }); }));
@@ -3990,10 +4441,18 @@
         const first = up[0].m.start;
         return up.filter(x => x.m.start === first).map(x => mealName(x.m.meal) + ' at ' + hhmm(first) + ' (' + x.v.name + ')').slice(0, 3).join(', ');
       }
+      function attBadge(t) {
+        if (t.consumer === 'guest') return '<span class="faint">–</span>';
+        if (t.absentFlag) return '<span class="badge b-bad" title="Flagged Absent: Kronos biometric records show no punch-in past grace period">Absent</span>';
+        if (t.kronosNote && t.kronosNote.startsWith('Resolved')) return '<span class="badge b-good" title="' + esc(t.kronosNote) + '">Present (Kronos Resolved)</span>';
+        if (t.punchStatus === 'present') return '<span class="badge b-good" title="Punched in on duty (Kronos verified)">Present</span>';
+        if (t.punchStatus === 'pending') return '<span class="badge b-warn" title="Punch-in pending (Within grace period / awaiting Kronos sync)">Punch Pending</span>';
+        return '<span class="faint">–</span>';
+      }
       function txTable(rows, compact, vendorView) {
         if (!rows.length) return `<div class="empty"><h3>No transactions</h3><p>Meals appear here as soon as they are scanned or marked.</p></div>`;
-        return `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Reference</th><th>Time</th><th>Name</th><th>ID</th>${compact ? '' : '<th>Site</th>'}${vendorView ? '' : '<th>Vendor</th>'}${compact || vendorView ? '' : '<th>Type</th>'}<th>Meal</th><th>Status</th>${compact ? '' : '<th>Reason</th>'}<th class="num">${vendorView ? 'To collect' : 'Rate'}</th>${compact ? '' : '<th>Source</th>'}</tr></thead><tbody>
-  ${rows.map(t => `<tr class="click ${t.state === 'cancelled' ? 'muted-row' : ''}" data-act="txDetail" data-id="${t.id}"><td class="ref nowrap">${t.ref}</td><td class="nowrap">${compact ? '' : fmtDay(t.date) + ', '}${hhmm(t.min)}</td><td>${whoName(t)}${t.consumer === 'guest' ? ' <span class="badge b-info">Guest</span>' : ''}</td><td class="nowrap">${whoId(t)}</td>${compact ? '' : `<td>${esc(E.site(t.site).code)}</td>`}${vendorView ? '' : `<td>${esc((E.vendor(t.vendor) || {}).name)}</td>`}${compact || vendorView ? '' : `<td>${typeBadge(t.vendorAtSite)}</td>`}<td>${esc(mealName(t.meal))}</td><td>${statusBadge(t.status, t.state)}</td>${compact ? '' : `<td class="small nowrap">${t.code}</td>`}<td class="num">${vendorView ? (t.status === 'chargeable' && t.state === 'done' ? money(t.rate) : '<span class="faint">–</span>') : txAmount(t)}</td>${compact ? '' : `<td class="small">${t.source === 'qr_scan' ? 'QR scan' : 'Counter mark'}</td>`}</tr>`).join('')}
+        return `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Reference</th><th>Time</th><th>Name</th><th>Emp ID</th>${compact ? '' : '<th>Site</th>'}${vendorView ? '' : '<th>Vendor</th>'}${compact || vendorView ? '' : '<th>Type</th>'}<th>Meal</th><th>Status</th>${compact ? '' : '<th>Attendance</th>'}${compact ? '' : '<th>Reason</th>'}<th class="num">${vendorView ? 'To collect' : 'Rate'}</th>${compact ? '' : '<th>Source</th>'}</tr></thead><tbody>
+  ${rows.map(t => `<tr class="click ${t.state === 'cancelled' ? 'muted-row' : ''}" data-act="txDetail" data-id="${t.id}"><td class="ref nowrap">${t.ref}</td><td class="nowrap">${compact ? '' : fmtDay(t.date) + ', '}${hhmm(t.min)}</td><td>${whoName(t)}${t.consumer === 'guest' ? ' <span class="badge b-info">Guest</span>' : ''}${compact && t.absentFlag ? ' <span class="badge b-bad">Absent</span>' : ''}</td><td class="nowrap"><b>${whoId(t)}</b></td>${compact ? '' : `<td>${esc(E.site(t.site).code)}</td>`}${vendorView ? '' : `<td>${esc((E.vendor(t.vendor) || {}).name)}</td>`}${compact || vendorView ? '' : `<td>${typeBadge(t.vendorAtSite)}</td>`}<td>${esc(mealName(t.meal))}</td><td>${statusBadge(t.status, t.state)}</td>${compact ? '' : `<td>${attBadge(t)}</td>`}${compact ? '' : `<td class="small nowrap">${t.code === 'Company-paid' ? '' : t.code}</td>`}<td class="num">${vendorView ? (t.status === 'chargeable' && t.state === 'done' ? money(t.rate) : '<span class="faint">–</span>') : txAmount(t)}</td>${compact ? '' : `<td class="small">${t.source === 'qr_scan' ? 'QR scan' : 'Counter mark'}</td>`}</tr>`).join('')}
   </tbody></table></div>`;
       }
       App.txTable = txTable;
@@ -4001,10 +4460,13 @@
       /* ---------- transactions ---------- */
       App.pages.tx = () => {
         const n = now();
-        const f = getF('tx', { from: n.date, to: n.date, meal: '', status: '', consumer: '', state: 'done', q: '' });
+        const f = getF('tx', { from: n.date, to: n.date, meal: '', status: '', attFlag: '', consumer: '', state: 'done', q: '' });
         const ids = scopeVendors().map(v => v.id);
         const q = f.q.trim().toLowerCase();
         let rows = DB.transactions.filter(t => t.mealDate >= f.from && t.mealDate <= f.to && ids.includes(t.vendor) && (!f.meal || t.meal === f.meal) && (!f.status || t.status === f.status) && (!f.consumer || t.consumer === f.consumer) && (!f.state || t.state === f.state));
+        if (f.attFlag === 'absent') rows = rows.filter(t => t.absentFlag);
+        else if (f.attFlag === 'present') rows = rows.filter(t => t.punchStatus === 'present');
+        else if (f.attFlag === 'pending') rows = rows.filter(t => t.punchStatus === 'pending');
         if (q) rows = rows.filter(t => (t.ref + ' ' + (who(t).name || '') + ' ' + (who(t).code || '')).toLowerCase().includes(q));
         rows.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : b.min - a.min));
         UI.txRows = rows;
@@ -4015,12 +4477,13 @@
     <label class="field"><span>To</span><input type="date" id="tx-to" data-f="tx.to" value="${f.to}"></label>
     <label class="field"><span>Meal</span><select data-f="tx.meal">${mealOpts(f.meal, true)}</select></label>
     <label class="field"><span>Status</span><select data-f="tx.status">${opt('', 'Any status', f.status)}${opt('entitled', 'Entitled', f.status)}${opt('chargeable', 'Chargeable', f.status)}</select></label>
+    <label class="field"><span>Attendance</span><select data-f="tx.attFlag">${opt('', 'All transactions', f.attFlag)}${opt('absent', 'Absent flag only', f.attFlag)}${opt('present', 'Present only', f.attFlag)}${opt('pending', 'Punch pending only', f.attFlag)}</select></label>
     <label class="field"><span>Consumer</span><select data-f="tx.consumer">${opt('', 'Employees and guests', f.consumer)}${opt('employee', 'Employees', f.consumer)}${opt('guest', 'Guests', f.consumer)}</select></label>
     <label class="field"><span>State</span><select data-f="tx.state">${opt('done', 'Done', f.state)}${opt('cancelled', 'Cancelled', f.state)}${opt('', 'All', f.state)}</select></label>
   </div>${txTable(shown)}${rows.length > shown.length ? `<div class="more">Showing the latest 200 of ${rows.length}. Narrow the filters to see the rest.</div>` : `<div class="more">${rows.length} transactions.</div>`}</div>`;
       };
       ACT.txCsv = () => {
-        const rows = [['Reference', 'Date', 'Time', 'Consumer', 'Name', 'ID', 'Site', 'Vendor', 'At site', 'Meal', 'Status', 'Reason', 'Rate', 'Source', 'State']].concat((UI.txRows || []).map(t => [t.ref, t.date, hhmm(t.min), t.consumer, who(t).name, who(t).code, E.site(t.site).code, E.vendor(t.vendor).name, t.vendorAtSite ? 'Yes' : 'No', mealName(t.meal), t.status, t.code, t.rate, t.source === 'qr_scan' ? 'QR scan' : 'Counter mark', t.state]));
+        const rows = [['Reference', 'Date', 'Time', 'Consumer', 'Name', 'ID', 'Site', 'Vendor', 'At site', 'Meal', 'Status', 'Attendance Status', 'Absent Flag', 'Reason', 'Rate', 'Source', 'State']].concat((UI.txRows || []).map(t => [t.ref, t.date, hhmm(t.min), t.consumer, who(t).name, who(t).code, E.site(t.site).code, E.vendor(t.vendor).name, t.vendorAtSite ? 'Yes' : 'No', mealName(t.meal), t.status, t.punchStatus || '–', t.absentFlag ? 'YES' : 'NO', t.code, t.rate, t.source === 'qr_scan' ? 'QR scan' : 'Counter mark', t.state]));
         copyCSV(rows, 'transactions');
       };
       ACT.txDetail = a => {
@@ -4040,7 +4503,7 @@
     <dt>Meal</dt><dd>${esc(mealName(t.meal))}</dd>
     <dt>Rate</dt><dd>${money(t.rate)} ${t.status === 'chargeable' ? '<span class="small muted">paid at the counter</span>' : '<span class="small muted">company-paid</span>'}</dd>
     <dt>Source</dt><dd>${t.source === 'qr_scan' ? 'QR scan in the employee app' : 'Marked at the counter' + (mu ? ' by ' + esc(mu.name) + (mu.role ? ', ' + ROLE[mu.role].toLowerCase() : '') : '')}</dd>
-    ${isAdmin && t.consumer === 'employee' ? `<dt>Roster line checked</dt><dd>${line ? fmtDate(line.date) + ', ' + esc(E.shiftText(line.shift)) : 'None (free day)'}</dd><dt>Duty range</dt><dd>${t.dutyStart != null ? rangeLabel([t.dutyStart, t.dutyEnd], t.date) : 'No duty'}</dd>` : ''}
+    ${isAdmin && t.consumer === 'employee' ? `<dt>Roster line checked</dt><dd>${line ? fmtDate(line.date) + ', ' + esc(E.shiftText(line.shift)) : 'None (free day)'}</dd><dt>Duty range</dt><dd>${t.dutyStart != null ? rangeLabel([t.dutyStart, t.dutyEnd], t.date) : 'No duty'}</dd><dt>Kronos Attendance</dt><dd>${t.absentFlag ? '<span class="badge b-bad">Flagged Absent</span> <span class="small" style="color:var(--bad)">Employee is rostered for this shift but Kronos recorded no biometric punch-in past grace. Meal allowed & flagged for HR audit.</span>' : (t.punchStatus === 'present' ? '<span class="badge b-good">Present</span> <span class="small muted">' + esc(t.kronosNote || 'Shift punch-in verified in Kronos') + '</span>' : (t.punchStatus === 'pending' ? '<span class="badge b-warn">Punch Pending</span> <span class="small muted">Within grace period / awaiting Kronos sync</span>' : '<span class="muted">Free day / Not rostered</span>'))}${t.kronosNote && !t.absentFlag ? `<div class="small" style="color:var(--good);margin-top:4px">✓ ${esc(t.kronosNote)}</div>` : ''}</dd>` : ''}
     ${t.state === 'cancelled' ? `<dt>Cancelled</dt><dd>${esc(t.cancelReason)}</dd>` : ''}
   </dl>${isAdmin && t.state === 'done' ? `<div class="section-t"><h3>Cancel this transaction</h3></div><label class="field"><span>Reason (required)</span><textarea id="cx-reason" rows="2" placeholder="For example: scanned by mistake, meal not served"></textarea></label><p class="err" id="cx-err"></p>` : ''}`;
         modal('Transaction ' + t.ref, body, `${isAdmin && t.state === 'done' ? `<button class="btn btn-danger" data-act="txCancel" data-id="${t.id}">Cancel transaction</button>` : ''}<button class="btn btn-primary" data-act="closeModal">Close</button>`, 'wide');
@@ -4079,20 +4542,93 @@
       const esc = A.esc;
       const DB = () => A.DB, E = () => A.E;
 
-      /* ---------- day ribbon ---------- */
+      /* ---------- day schedule & meal eligibility (text format) ---------- */
       function ribbon(emp, D, nowAt) {
-        const e = E(), b = dayNum(D) * 1440;
-        const pct = a => ((a - b) / 1440 * 100).toFixed(3) + '%';
-        const clip = r => [Math.max(r[0], b), Math.min(r[1], b + 1440)];
-        const bar = (r, cls, label, title) => { const c = clip(r); if (c[1] <= c[0]) return ''; const w = (c[1] - c[0]) / 1440 * 100; return `<span class="rb-bar ${cls}" style="left:${pct(c[0])};width:${w.toFixed(3)}%" title="${esc(title || '')}">${w > 5 ? esc(label || '') : ''}</span>`; };
+        const e = E(), db = DB();
         const du = e.duty(emp.id, D), fd = e.freeDay(emp.id, D);
-        const nowMark = nowAt != null && nowAt >= b && nowAt < b + 1440 ? `<span class="rb-now" style="left:${pct(nowAt)}" title="Scan clock ${absLabel(nowAt)}"></span>` : '';
-        const dutyRow = `<div class="rb-row"><div class="rb-name"><b>Duty</b><small>${esc(fd.free ? fd.why : e.shiftText(fd.line.shift))}</small></div><div class="rb-track">${e.dayRanges(du.ranges, D).map(r => bar(r, 'duty', rangeLabel(r, D), 'On duty ' + rangeLabel(r, D))).join('')}${du.cuts.map(c => bar([c.s, c.e], 'leave', 'Leave', 'Approved leave ' + rangeLabel([c.s, c.e], D))).join('')}${nowMark}</div></div>`;
-        const vs = DB().vendors.filter(v => v.siteId === emp.siteId && v.active);
-        const rows = vs.map(v => `<div class="rb-row"><div class="rb-name">${esc(v.name)}<small>${v.atSite ? 'At site' : 'Off site'}</small></div><div class="rb-track">${v.meals.map(m => { const w = e.windowAbs(D, m.start, m.end); return bar(w, 'win', e.meal(m.meal).code, e.meal(m.meal).name + ' ' + hhmm(m.start) + '–' + hhmm(m.end)) + (emp.food && emp.optins.includes(m.meal) ? e.eligibleSegs(emp.id, v, m, D).map(s => bar(s, 'ok', e.meal(m.meal).code, 'Eligible ' + rangeLabel(s, D))).join('') : ''); }).join('')}${nowMark}</div></div>`).join('');
-        const ticks = [0, 3, 6, 9, 12, 15, 18, 21, 24].map(h => `<span style="left:${(h / 24 * 100).toFixed(3)}%">${String(h).padStart(2, '0')}</span>`).join('');
-        return `<div class="ribbon">${dutyRow}${rows}<div class="rb-axis"><div></div><div class="rb-ticks">${ticks}</div></div></div>
-  <div class="legend"><span><i style="background:var(--brand)"></i>On duty</span><span><i style="background:var(--warn-line)"></i>Approved leave hours</span><span><i style="border:1px dashed var(--ink-3)"></i>Meal window</span><span><i style="background:var(--good)"></i>Eligible for this employee</span><span><i style="background:var(--bad);width:3px"></i>Scan clock</span></div>`;
+        const vs = db.vendors.filter(v => v.siteId === emp.siteId && v.active);
+        const dutyText = fd.free ? fd.why : e.shiftText(fd.line.shift);
+        const workRanges = e.dayRanges(du.ranges, D).map(r => rangeLabel(r, D)).join(', ') || 'No duty hours';
+        const leaveText = du.cuts.length ? du.cuts.map(c => rangeLabel([c.s, c.e], D)).join(', ') : 'None';
+        const att = e.attendanceRecord ? e.attendanceRecord(emp.id, D) : null;
+        const attBadge = att ? (att.punchIn != null ? '<span class="badge b-good">Present</span>' : (att.status === 'absent' ? '<span class="badge b-bad">Flagged Absent</span>' : '<span class="badge b-warn">Punch Pending</span>')) : '<span class="badge">Not rostered</span>';
+
+        const rows = [];
+        vs.forEach(v => {
+          v.meals.slice().sort((a, b) => a.start - b.start).forEach(m => {
+            const mObj = e.meal(m.meal);
+            const winStr = hhmm(m.start) + '–' + hhmm(m.end);
+            const opted = emp.food && emp.optins.includes(m.meal);
+            const segs = opted ? e.eligibleSegs(emp.id, v, m, D) : [];
+            const isEligible = segs.length > 0;
+            const eligibleHours = isEligible ? segs.map(s => rangeLabel(s, D)).join(', ') : '–';
+            
+            let statusBadge = '';
+            let note = '';
+            if (!emp.food) {
+              statusBadge = '<span class="badge">Pay at counter</span>';
+              note = 'Food facility turned off for employee';
+            } else if (!opted) {
+              statusBadge = '<span class="badge">Pay at counter</span>';
+              note = 'Meal not opted in monthly plan';
+            } else if (isEligible) {
+              statusBadge = '<span class="badge b-good">Company-paid</span>';
+              note = v.atSite ? 'Eligible during rostered duty hours' : 'Eligible outside duty hours (Off-site)';
+            } else {
+              statusBadge = '<span class="badge b-warn">Pay at counter</span>';
+              note = v.atSite ? 'Window does not overlap working duty hours' : 'Window overlaps working duty hours';
+            }
+
+            rows.push({
+              vendor: v.name,
+              atSite: v.atSite,
+              meal: mObj.name,
+              code: mObj.code,
+              rate: m.rate,
+              winStr,
+              isEligible,
+              eligibleHours,
+              statusBadge,
+              note
+            });
+          });
+        });
+
+        return `<div class="stack" style="gap:14px">
+          <div class="row small" style="background:#f8fafc;padding:12px 16px;border:1px solid var(--line);border-radius:var(--radius);gap:20px;flex-wrap:wrap">
+            <div><span class="muted">Rostered shift:</span> <b>${esc(dutyText)}</b></div>
+            <div><span class="muted">Working duty hours:</span> <b>${esc(workRanges)}</b></div>
+            <div><span class="muted">Approved leave:</span> <b>${esc(leaveText)}</b></div>
+            <div><span class="muted">Attendance:</span> ${attBadge}</div>
+            <div><span class="muted">Food plan:</span> <b>${emp.food ? 'Active' : 'Off'}</b></div>
+          </div>
+          <div class="tbl-wrap">
+            <table class="list cards">
+              <thead>
+                <tr>
+                  <th>Canteen</th>
+                  <th>Meal type</th>
+                  <th>Window timings</th>
+                  <th>Company-paid timings</th>
+                  <th>Eligibility</th>
+                  <th class="num">Rate</th>
+                  <th>Eligibility note</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.length ? rows.map(r => `<tr>
+                  <td><b>${esc(r.vendor)}</b> <span class="badge small ${r.atSite ? 'b-good' : ''}">${r.atSite ? 'At site' : 'Off site'}</span></td>
+                  <td><b>${esc(r.meal)}</b> <span class="pill pri">${esc(r.code)}</span></td>
+                  <td class="nowrap">${esc(r.winStr)}</td>
+                  <td class="nowrap font-mono">${esc(r.eligibleHours)}</td>
+                  <td>${r.statusBadge}</td>
+                  <td class="num">${money(r.rate)}</td>
+                  <td class="small muted">${esc(r.note)}</td>
+                </tr>`).join('') : '<tr><td colspan="7" class="muted">No canteens configured for this site.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+        </div>`;
       }
       A.ribbon = ribbon;
 
@@ -4109,14 +4645,15 @@
         const L = s.last;
         const verdictWord = { entitled: 'Approved', chargeable: 'Pay at counter', blocked: 'Not allowed', rejected: 'Rejected' };
         const phone = L ? `<div class="verdict ${L.res.result}"><div class="word">${verdictWord[L.res.result]}</div><div class="meal">${esc(L.res.meal ? e.meal(L.res.meal).name : 'No meal')}${L.res.vendorId ? ' at ' + esc(e.vendor(L.res.vendorId).name) : ''}</div><p class="msg">${esc(L.res.message)}</p></div>
-    <div class="screen-b">${L.tx ? `<div class="kv"><span class="muted">Reference</span><b class="ref">${L.tx.ref}</b></div><div class="kv"><span class="muted">Amount</span><b>${L.tx.status === 'chargeable' ? money(L.tx.rate) + ' to pay' : 'Company-paid'}</b></div>` : `<div class="kv"><span class="muted">Reason code</span><b>${L.res.code}</b></div>`}
+    ${L.tx && L.tx.absentFlag ? `<div class="m-card" style="background:rgba(230,81,0,0.12);border-left:4px solid #e65100;padding:8px 10px;margin:8px 12px 0;border-radius:4px"><b style="color:#b23c00;font-size:12px">⚠️ Absent Flag Attached</b><p class="small" style="color:#6d2c00;margin:2px 0 0">Rostered for shift but no punch-in detected (past grace). Meal allowed & flagged for HR payroll audit.</p></div>` : ''}
+    <div class="screen-b">${L.tx ? `<div class="kv"><span class="muted">Reference</span><b class="ref">${L.tx.ref}</b></div><div class="kv"><span class="muted">Amount</span><b>${L.tx.status === 'chargeable' ? money(L.tx.rate) + ' to pay' : 'Company-paid'}</b></div><div class="kv"><span class="muted">Shift Attendance</span><b>${L.tx.absentFlag ? '<span class="badge b-bad">Flagged Absent</span>' : L.tx.punchStatus === 'present' ? '<span class="badge b-good">Present</span>' : '<span class="badge b-warn">Punch Pending</span>'}</b></div>` : `<div class="kv"><span class="muted">Reason code</span><b>${L.res.code}</b></div>`}
     <div class="kv"><span class="muted">Scanned</span><span>${fmtDay(L.res.date)}, ${hhmm(L.res.min)}</span></div><div class="kv"><span class="muted">Employee</span><span>${esc(e.emp(L.res.empId).code)}</span></div></div>`
           : `<div class="screen-idle"><div><b>Utilities, Food</b><p class="small" style="margin-top:6px">Choose an employee and a canteen QR, then scan. The result shows here as the employee would see it.</p></div></div>`;
         return A.ph('Scan test console', '<a href="#/dashboard">Food Utility</a> / Operations') + `<p class="lead">Simulates the employee app. Each scan runs the full eligibility engine against the live roster, OT, extensions and leave, and is saved as a real transaction or log entry.</p>
   <div class="grid-sim">
     <div class="stack">
       <div class="panel"><div class="panel-h"><h2>1. Employee</h2></div><div class="panel-b stack">
-        <label class="field"><span>Employee scanning</span><select id="sim-emp" data-ch="simEmp">${elist.map(x => `<option value="${x.id}" ${x.id === emp.id ? 'selected' : ''}>${esc(x.code + ' ' + x.name + ' (' + A.shiftToday(x.id, n.date) + ')')}</option>`).join('')}</select></label>
+        <label class="field"><span>Employee scanning</span><select id="sim-emp" data-ch="simEmp">${elist.map(x => { const att = e.attendanceRecord(x.id, n.date); const attTag = att ? (att.punchIn != null ? ' • Present' : (att.status === 'absent' ? ' • Absent' : ' • Punch pending')) : ''; return `<option value="${x.id}" ${x.id === emp.id ? 'selected' : ''}>${esc(x.code + ' ' + x.name + ' (' + A.shiftToday(x.id, n.date) + attTag + ')')}</option>`; }).join('')}</select></label>
         <div class="row small"><span class="badge ${emp.food ? 'b-good' : 'b-bad'}">${emp.food ? 'Food facility on' : 'Food facility off'}</span><span class="muted">Opted:</span>${A.meals().map(m => `<span class="chip static ${emp.optins.includes(m.id) ? 'on' : ''}">${esc(m.name)}</span>`).join('')}<a href="#/employees" class="small">Change</a></div>
       </div></div>
       <div class="panel"><div class="panel-h"><h2>2. Canteen QR</h2><span class="small muted">${esc(e.site(emp.siteId).name)} canteens</span></div><div class="panel-b">
@@ -4132,7 +4669,7 @@
       ${L ? `<div class="panel"><div class="panel-h"><h2>How the engine decided</h2></div><div class="panel-b"><ol class="trace">${L.res.trace.map(t => `<li><span class="mk ${t.ok === true ? 'y' : t.ok === false ? 'n' : ''}" aria-hidden="true">${t.ok === true ? '✓' : t.ok === false ? '✕' : '•'}</span><span><b>${esc(t.label)}</b><br><span class="small muted">${esc(t.detail)}</span></span></li>`).join('')}</ol></div></div>` : ''}
     </div>
   </div>
-  <div class="panel" style="margin-top:16px"><div class="panel-h"><h2>${esc(emp.name)} on ${fmtDate(n.date)}</h2><span class="small muted">Green is when a scan at that canteen would be company-paid</span></div><div class="panel-b">${ribbon(emp, n.date, dayNum(n.date) * 1440 + n.min)}</div></div>`;
+  <div class="panel" style="margin-top:16px"><div class="panel-h"><h2>${esc(emp.name)} on ${fmtDate(n.date)}</h2><span class="small muted">Shift schedule & canteen meal eligibility</span></div><div class="panel-b">${ribbon(emp, n.date, dayNum(n.date) * 1440 + n.min)}</div></div>`;
       };
       CH.simEmp = t => { UI.sim.emp = t.value; UI.sim.last = null; A.render(); };
       CH.simVendor = t => { UI.sim.vendor = t.value; A.render(); };
@@ -4153,17 +4690,311 @@
         A.toast(c.tx ? (res.result === 'entitled' ? 'Approved: ' : 'Chargeable: ') + c.tx.ref : 'Not served: ' + res.code, c.tx ? (res.result === 'entitled' ? 'good' : 'warn') : 'bad');
       };
 
+      /* ---------- enterprise vendor portal registry & integration ---------- */
+      const VENDOR_PORTAL_REGISTRY = {
+        'MUN-V01': {
+          code: 'MUN-V01',
+          name: 'Annapurna Caterers Private Limited',
+          siteId: 'MUN',
+          location: 'CT2 terminal canteen, inside gate 3',
+          atSite: true,
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 40 },
+            { meal: 'LU', start: 780, end: 900, rate: 85 },
+            { meal: 'SN', start: 960, end: 1080, rate: 30 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 85 }
+          ],
+          users: [
+            { name: 'Ramesh Nair', email: 'annapurna@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'CT2 counter', email: 'annapurna.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V02': {
+          code: 'MUN-V02',
+          name: 'Shree Sai Food Services',
+          siteId: 'MUN',
+          location: 'CT3 and CT4 shared canteen',
+          atSite: true,
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 42 },
+            { meal: 'LU', start: 780, end: 900, rate: 90 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 90 }
+          ],
+          users: [
+            { name: 'Sai Prasad', email: 'shreesai@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'CT3 counter', email: 'shreesai.ct3@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V03': {
+          code: 'MUN-V03',
+          name: 'Kutch Rasoi Hospitality',
+          siteId: 'MUN',
+          location: 'Samudra Township mess',
+          atSite: false,
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 45 },
+            { meal: 'LU', start: 780, end: 900, rate: 95 },
+            { meal: 'SN', start: 960, end: 1080, rate: 35 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 95 }
+          ],
+          users: [
+            { name: 'Hetal Soni', email: 'kutchrasoi@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Mess counter', email: 'kutchrasoi.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V04': {
+          code: 'MUN-V04',
+          name: 'Mundra Bhojanalay Canteen Services',
+          siteId: 'MUN',
+          location: 'Gate 1 food court',
+          atSite: false,
+          meals: [
+            { meal: 'BF', start: 450, end: 570, rate: 38 },
+            { meal: 'LU', start: 780, end: 900, rate: 80 },
+            { meal: 'SN', start: 960, end: 1080, rate: 28 }
+          ],
+          users: [
+            { name: 'Kishor Gor', email: 'bhojanalay@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Food court counter', email: 'bhojanalay.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V05': {
+          code: 'MUN-V05',
+          name: 'Sagar Kitchen Private Limited',
+          siteId: 'MUN',
+          location: 'Port colony canteen',
+          atSite: false,
+          meals: [
+            { meal: 'LU', start: 780, end: 900, rate: 88 },
+            { meal: 'SN', start: 960, end: 1080, rate: 32 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 88 }
+          ],
+          users: [
+            { name: 'Anil Makwana', email: 'sagarkitchen@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Colony counter', email: 'sagarkitchen.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'DHJ-V01': {
+          code: 'DHJ-V01',
+          name: 'Narmada Caterers & Canteen',
+          siteId: 'DHJ',
+          location: 'Dahej jetty canteen',
+          atSite: true,
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 40 },
+            { meal: 'LU', start: 780, end: 900, rate: 85 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 85 }
+          ],
+          users: [
+            { name: 'Mehul Desai', email: 'narmada@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Jetty counter', email: 'narmada.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V06': {
+          code: 'MUN-V06',
+          name: 'Taj Port Caterers & Hospitality Services',
+          siteId: 'MUN',
+          location: 'CT1 Terminal Central Canteen, Gate 2',
+          atSite: true,
+          meals: [
+            { meal: 'BF', start: 420, end: 570, rate: 45 },
+            { meal: 'LU', start: 750, end: 930, rate: 90 },
+            { meal: 'SN', start: 960, end: 1110, rate: 35 },
+            { meal: 'DN', start: 1140, end: 1320, rate: 90 }
+          ],
+          users: [
+            { name: 'Vikramaditya Rathore', email: 'taj.caterers@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'CT1 Counter 1', email: 'taj.ct1@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'DHJ-V02': {
+          code: 'DHJ-V02',
+          name: 'Gujarat Coastal Food Services',
+          siteId: 'DHJ',
+          location: 'Dahej Admin Complex Canteen',
+          atSite: true,
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 42 },
+            { meal: 'LU', start: 780, end: 900, rate: 88 },
+            { meal: 'SN', start: 960, end: 1080, rate: 30 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 88 }
+          ],
+          users: [
+            { name: 'Bhupendra Patel', email: 'coastal.food@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Admin Counter', email: 'coastal.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        },
+        'MUN-V07': {
+          code: 'MUN-V07',
+          name: 'Adani Township Central Kitchen',
+          siteId: 'MUN',
+          location: 'Shantigram Township Community Hall',
+          atSite: false,
+          meals: [
+            { meal: 'BF', start: 450, end: 600, rate: 45 },
+            { meal: 'LU', start: 780, end: 960, rate: 95 },
+            { meal: 'SN', start: 990, end: 1110, rate: 35 },
+            { meal: 'DN', start: 1170, end: 1320, rate: 95 }
+          ],
+          users: [
+            { name: 'Rajesh Solanki', email: 'township.kitchen@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Township Counter', email: 'township.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        }
+      };
+
+      function fetchVendorFromPortal(code) {
+        if (!code) return null;
+        const c = code.trim().toUpperCase();
+        if (VENDOR_PORTAL_REGISTRY[c]) {
+          return JSON.parse(JSON.stringify(VENDOR_PORTAL_REGISTRY[c]));
+        }
+        const isDhj = c.startsWith('DHJ');
+        const siteId = isDhj ? 'DHJ' : 'MUN';
+        const num = c.replace(/\D/g, '') || '01';
+        return {
+          code: c,
+          name: 'Vendor ' + c + ' Enterprise Canteen Services',
+          siteId,
+          location: (isDhj ? 'Dahej Jetty ' : 'Mundra Port Gate ') + num + ' Canteen',
+          atSite: !c.includes('OFF') && !c.includes('TOWN'),
+          meals: [
+            { meal: 'BF', start: 420, end: 540, rate: 42 },
+            { meal: 'LU', start: 780, end: 900, rate: 85 },
+            { meal: 'SN', start: 960, end: 1080, rate: 30 },
+            { meal: 'DN', start: 1140, end: 1260, rate: 85 }
+          ],
+          users: [
+            { name: 'Manager ' + c, email: c.toLowerCase().replace(/[^a-z0-9]/g, '') + '@vendor.in', role: 'vadmin', password: 'vendor123' },
+            { name: 'Counter Staff', email: c.toLowerCase().replace(/[^a-z0-9]/g, '') + '.counter@vendor.in', role: 'counter', password: 'vendor123' }
+          ]
+        };
+      }
+
+      function exportVendorTable(input) {
+        if (!input) return;
+        const vendors = Array.isArray(input) ? input : [input];
+        if (!vendors.length) return;
+        const e = E();
+        const nowStr = new Date().toISOString().slice(0, 10);
+        const isMulti = vendors.length > 1;
+        const code = isMulti ? `REGISTRY_BATCH_${vendors.length}_VENDORS` : ((vendors[0].code || 'VENDOR').toUpperCase());
+        const fileName = `vendor_${code}_table_${nowStr}`;
+
+        const headers = [
+          'Vendor Code',
+          'Vendor Name',
+          'Site ID',
+          'Site Name',
+          'Canteen Location',
+          'Canteen Type',
+          'Status',
+          'Meal Type',
+          'Meal Code',
+          'Meal Start Time',
+          'Meal End Time',
+          'Meal Rate (INR)',
+          'Staff Name',
+          'Staff Role',
+          'Staff Email'
+        ];
+
+        const rows = [headers];
+
+        vendors.forEach(v => {
+          const siteObj = e.site(v.siteId) || { name: v.siteId || '' };
+          const meals = (v.meals && v.meals.length) ? v.meals : [{ meal: '', start: NaN, end: NaN, rate: '' }];
+          const users = (v.users && v.users.length) ? v.users : [{ name: '', role: '', email: '' }];
+          const maxRows = Math.max(meals.length, users.length);
+
+          for (let i = 0; i < maxRows; i++) {
+            const m = meals[i];
+            const u = users[i];
+            const mealObj = m && m.meal ? (A.meals().find(x => x.id === m.meal) || { name: m.meal }) : null;
+            rows.push([
+              v.code || '',
+              v.name || '',
+              v.siteId || '',
+              siteObj.name || '',
+              v.location || '',
+              v.atSite ? 'Inside Site' : 'Outside Site',
+              v.active !== false ? 'Active' : 'Inactive',
+              mealObj ? mealObj.name : '',
+              m && m.meal ? m.meal : '',
+              m && !isNaN(m.start) ? hhmm(m.start) : '',
+              m && !isNaN(m.end) ? hhmm(m.end) : '',
+              m && m.rate != null && !isNaN(m.rate) ? m.rate : '',
+              u ? u.name || '' : '',
+              u ? (u.role === 'vadmin' ? 'Food Admin' : u.role === 'counter' ? 'Canteen Staff' : u.role || '') : '',
+              u ? u.email || '' : ''
+            ]);
+          }
+        });
+
+        // CSV generation with UTF-8 BOM so Excel opens it in columns immediately
+        const csvContent = rows.map(r => r.map(c => {
+          const s = String(c == null ? '' : c);
+          return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+        }).join(',')).join('\r\n');
+
+        const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${fileName}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => { document.body.removeChild(link); URL.revokeObjectURL(url); }, 250);
+        A.toast(`✓ Vendor data downloaded in table format (${fileName}.csv)!`, 'good');
+      }
+
       /* ---------- vendors ---------- */
       P.vendors = () => {
         const db = DB(), e = E();
         const f = A.getF('ven', { q: '' });
         const q = f.q.trim().toLowerCase();
         const rows = A.scopeVendors().filter(v => (!q || (v.code + ' ' + v.name + ' ' + v.location).toLowerCase().includes(q)));
-        return A.ph('Vendors', '', `<button class="btn btn-primary" data-act="go" data-to="vendor/new">New</button>`, { search: { id: 'ven-q', f: 'ven.q', value: f.q, ph: 'Search code, name or location...' }, pager: (rows.length ? '1-' + rows.length : '0') + ' / ' + rows.length }) + `
+        return A.ph('Vendors', '', `<button class="btn" data-act="vendorsExportTable" style="margin-right:8px" title="Export vendors list in table format (CSV)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:-2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export Table (CSV)</button><button class="btn" data-act="vdPortalModal" style="margin-right:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:-2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Fetch from Vendor Portal</button><button class="btn btn-primary" data-act="go" data-to="vendor/new">New</button>`, { search: { id: 'ven-q', f: 'ven.q', value: f.q, ph: 'Search code, name or location...' }, pager: (rows.length ? '1-' + rows.length : '0') + ' / ' + rows.length }) + `
   <div class="panel">
   <div class="tbl-wrap"><table class="list cards"><thead><tr><th>Code</th><th>Name</th><th>Site</th><th>Location</th><th>Type</th><th>Meals and rates</th><th class="num">Logins</th><th>Status</th></tr></thead><tbody>
   ${rows.map(v => `<tr class="click" data-act="go" data-to="vendor/${v.id}"><td class="nowrap">${esc(v.code)}</td><td><b style="font-weight:500">${esc(v.name)}</b></td><td>${esc(e.site(v.siteId).name)}</td><td class="small">${esc(v.location)}</td><td>${A.typeBadge(v.atSite)}</td><td><div class="chips">${v.meals.slice().sort((a, b) => a.start - b.start).map(m => `<span class="chip static" title="${esc(e.meal(m.meal).name)} ${hhmm(m.start)}–${hhmm(m.end)}">${esc(e.meal(m.meal).code)} ${hhmm(m.start)}–${hhmm(m.end)}, ${money(m.rate)}</span>`).join('') || '<span class="faint small">No meal lines</span>'}</div></td><td class="num">${v.users.length}</td><td>${v.active ? '<span class="badge b-good">Active</span>' : '<span class="badge">Inactive</span>'}</td></tr>`).join('')}
   </tbody></table></div>${rows.length ? '' : '<div class="empty"><h3>No vendors match</h3><p>Clear the search or create a vendor.</p></div>'}</div>`;
+      };
+      ACT.vendorsExportTable = () => {
+        const e = E();
+        const rows = A.scopeVendors();
+        if (!rows.length) { A.toast('No vendors to export.', 'warn'); return; }
+        const headers = ['Vendor Code', 'Vendor Name', 'Site', 'Location', 'Canteen Type', 'Status', 'Meals & Timings', 'Rates (INR)', 'Logins Count'];
+        const dataRows = [headers];
+        rows.forEach(v => {
+          const site = e.site(v.siteId) || { name: v.siteId };
+          const mealsStr = (v.meals || []).map(m => `${e.meal(m.meal).name} (${hhmm(m.start)}–${hhmm(m.end)})`).join('; ');
+          const ratesStr = (v.meals || []).map(m => `${e.meal(m.meal).name}: Rs.${m.rate}`).join('; ');
+          dataRows.push([
+            v.code,
+            v.name,
+            site.name,
+            v.location,
+            v.atSite ? 'Inside Site' : 'Outside Site',
+            v.active ? 'Active' : 'Inactive',
+            mealsStr,
+            ratesStr,
+            v.users ? v.users.length : 0
+          ]);
+        });
+        const csvContent = dataRows.map(r => r.map(c => {
+          const s = String(c == null ? '' : c);
+          return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+        }).join(',')).join('\r\n');
+        const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `vendors_master_table_${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(() => { document.body.removeChild(link); URL.revokeObjectURL(url); }, 250);
+        A.toast(`✓ Vendors list exported in table format (${dataRows.length - 1} records).`, 'good');
       };
 
       function draftFor(id) {
@@ -4181,44 +5012,130 @@
         const errs = UI.vd.errors || [];
         const tv = t => isNaN(t) ? '' : hhmm(t);
         const tab = UI.vtab || 'meals';
-        const row = (label, forId, html, help) => `<div class="o-row"><label class="o-lbl" ${forId ? `for="${forId}"` : ''}>${label}</label><div class="o-val">${html}${help ? `<div class="o-help">${help}</div>` : ''}</div></div>`;
         const stale = saved && e.mapStale(saved);
         const txCount = saved ? db.transactions.filter(t => t.vendor === saved.id && t.state === 'done').length : 0;
-        const smart = (val, label, act, extra) => `<button class="o-stat" ${act ? `data-act="${act}"` : 'disabled'} ${extra || ''}><b>${val}</b><span>${label}</span></button>`;
         const meals = d.meals.length ? `<div class="tbl-wrap"><table class="list o-edit"><thead><tr><th>Meal type</th><th>Start</th><th>End</th><th class="num">Rate per meal (₹)</th><th></th></tr></thead><tbody>
       ${d.meals.map((m, i) => `<tr><td><select data-ch="vdMeal" data-i="${i}" data-k="meal" aria-label="Meal type">${A.mealOpts(m.meal)}</select></td><td><input type="time" data-ch="vdMeal" data-i="${i}" data-k="start" value="${tv(m.start)}" aria-label="Start"></td><td><input type="time" data-ch="vdMeal" data-i="${i}" data-k="end" value="${tv(m.end)}" aria-label="End"></td><td class="num"><input type="number" min="0" step="1" data-ch="vdMeal" data-i="${i}" data-k="rate" value="${m.rate}" style="width:100px;text-align:right" aria-label="Rate"></td><td><button class="icon-btn" data-act="vdDelMeal" data-i="${i}" aria-label="Remove meal line">×</button></td></tr>`).join('')}
       <tr><td colspan="5"><button class="btn btn-link" data-act="vdAddMeal">Add a line</button></td></tr>
-    </tbody></table></div><p class="o-help" style="margin-top:8px">One line per meal type. Windows cannot cross midnight or overlap. The rate is copied onto each transaction at scan time.</p>`
+    </tbody></table></div><p class="small muted" style="margin-top:8px">One line per meal type. Windows cannot cross midnight or overlap. The rate is copied onto each transaction at scan time.</p>`
           : `<p class="muted" style="padding:8px 0">No meal lines yet. <button class="btn btn-link" data-act="vdAddMeal">Add a line</button></p>`;
         const users = d.users.length ? `<div class="tbl-wrap"><table class="list o-edit"><thead><tr><th>Name</th><th>Access</th><th>Email</th><th>Password</th><th></th></tr></thead><tbody>
       ${d.users.map((u, i) => `<tr><td><input type="text" data-in="vdUser" data-i="${i}" data-k="name" value="${esc(u.name)}" aria-label="Name"></td><td><select data-ch="vdUserRole" data-i="${i}" aria-label="Access">${A.opt('vadmin', 'Food admin', u.role)}${A.opt('counter', 'Canteen staff', u.role)}</select></td><td><input type="email" data-in="vdUser" data-i="${i}" data-k="email" value="${esc(u.email)}" aria-label="Email"></td><td><input type="text" data-in="vdUser" data-i="${i}" data-k="password" value="${esc(u.password)}" aria-label="Password"></td><td><button class="icon-btn" data-act="vdDelUser" data-i="${i}" aria-label="Remove login">×</button></td></tr>`).join('')}
       <tr><td colspan="5"><button class="btn btn-link" data-act="vdAddUser">Add a line</button></td></tr>
-    </tbody></table></div><p class="o-help" style="margin-top:8px">Food admin is the vendor's admin profile: dashboard, people, guests, transactions, menu upload and billing, view only. Canteen staff work at the counter: they see today's guest list and mark each guest's meal as taken or not taken.</p>`
+    </tbody></table></div><p class="small muted" style="margin-top:8px">Food admin is the vendor's admin profile: dashboard, people, guests, transactions, menu upload and billing, view only. Canteen staff work at the counter: they see today's guest list and mark each guest's meal as taken or not taken.</p>`
           : `<p class="muted" style="padding:8px 0">No logins. The vendor cannot use the portal until you add one. <button class="btn btn-link" data-act="vdAddUser">Add a line</button></p>`;
-        const qr = saved ? `<div class="qr-card"><div class="qr" data-qr="${esc(saved.qrToken)}" data-size="140"></div><div class="stack" style="gap:8px"><div><span class="o-lbl">Token</span><br><b class="ref">${esc(saved.qrToken)}</b></div><p class="o-help">Print the poster and place it at the counter. Regenerating makes the printed poster invalid at once.</p><div class="row"><button class="btn" data-act="qrPrint" data-id="${saved.id}">Print QR poster</button><button class="btn btn-danger" data-act="qrRegenAsk" data-id="${saved.id}">Regenerate QR</button></div></div></div>` : '<p class="muted" style="padding:8px 0">The QR code is generated when you save the vendor.</p>';
+        const qr = saved ? `<div class="qr-card"><div class="qr" data-qr="${esc(saved.qrToken)}" data-size="140"></div><div class="stack" style="gap:8px"><div><span class="small muted" style="font-weight:600">Token</span><br><b class="ref">${esc(saved.qrToken)}</b></div><p class="small muted">Print the poster and place it at the counter. Regenerating makes the printed poster invalid at once.</p><div class="row"><button class="btn" data-act="qrPrint" data-id="${saved.id}">Print QR poster</button><button class="btn btn-danger" data-act="qrRegenAsk" data-id="${saved.id}">Regenerate QR</button></div></div></div>` : '<p class="muted" style="padding:8px 0">The QR code is generated when you save the vendor.</p>';
         const tabs = [['meals', 'Meal lines'], ['users', 'Portal logins'], ['qr', 'Counter QR']];
         return A.ph(saved ? esc(saved.name) : 'New', '<a href="#/vendors">Vendors</a>', `<button class="btn btn-primary" data-act="vdSave">Save</button><button class="btn" data-act="vdDiscard">Discard</button>`) + `
-  ${errs.length ? `<div class="banner bad" role="alert"><div><b>Fix these before saving</b><ul>${errs.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>` : ''}
-  <div class="o-form">
-    <div class="o-statusbar"><div class="o-sb-btns">${saved ? `<button class="btn btn-primary" data-act="qrPrint" data-id="${saved.id}">Print QR poster</button>${stale ? `<button class="btn" data-act="mapRebuild" data-id="${saved.id}">Rebuild shift–meal map</button>` : ''}` : ''}</div>
-      <div class="o-sb-status" role="radiogroup" aria-label="Status"><button role="radio" aria-checked="${!d.active}" class="${!d.active ? 'on' : ''}" data-act="vdActive" data-v="0">Inactive</button><button role="radio" aria-checked="${d.active}" class="${d.active ? 'on' : ''}" data-act="vdActive" data-v="1">Active</button></div></div>
-    <div class="o-sheet">
-      ${saved ? `<div class="o-smart">${smart(txCount, 'Transactions', 'vdSmartTx', `data-id="${saved.id}"`)}${smart(d.users.length, 'Logins', 'vdTab', 'data-tab="users"')}${smart(d.meals.length, 'Meal lines', 'vdTab', 'data-tab="meals"')}${smart(stale ? 'Stale' : 'Current', 'Shift–meal map', 'vdSmartMap', `data-id="${saved.id}"`)}</div>` : ''}
-      ${stale ? `<div class="banner warn" style="margin-bottom:14px"><span>Timings or the at-site flag changed since the shift–meal map was built.</span><button class="btn" data-act="mapRebuild" data-id="${saved.id}">Rebuild for this vendor</button></div>` : ''}
-      <div class="o-title"><label for="vd-name" class="o-lbl">Vendor name</label><input type="text" id="vd-name" class="o-title-in" data-in="vd" data-k="name" value="${esc(d.name)}" placeholder="e.g. Annapurna Caterers"></div>
-      <div class="o-group2">
-        <div class="o-group">
-          ${row('Vendor code', 'vd-code', `<input type="text" id="vd-code" data-in="vd" data-k="code" value="${esc(d.code)}" placeholder="MUN-V06">`)}
-          ${row('Site', 'vd-site', `<select id="vd-site" data-ch="vd" data-k="siteId">${A.siteOpts(d.siteId)}</select>`)}
-          ${row('Location', 'vd-loc', `<input type="text" id="vd-loc" data-in="vd" data-k="location" value="${esc(d.location)}" placeholder="Terminal, gate or building">`)}
-        </div>
-        <div class="o-group">
-          ${row('At site', 'vd-at', `<label class="switch"><input type="checkbox" id="vd-at" data-ch="vdBool" data-k="atSite" ${d.atSite ? 'checked' : ''}><i></i><span>${d.atSite ? 'Canteen is inside the site' : 'Canteen is outside the site'}</span></label>`, d.atSite ? 'Employees eat here during their shift. A scan on a free day or while off duty is blocked.' : 'Employees eat here only when off duty. Leave, weekly off and not rostered count as a free day.')}
-          ${row('Status', '', `<span class="badge ${d.active ? 'b-good' : ''}">${d.active ? 'Active' : 'Inactive'}</span>`, 'Change it in the status bar. An inactive vendor\'s QR is rejected.')}
+  ${errs.length ? `<div class="banner bad" role="alert" style="margin-bottom:16px"><div><b>Fix these before saving</b><ul>${errs.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></div>` : ''}
+  <div class="panel">
+    <div class="panel-h" style="flex-wrap:wrap;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-weight:700;font-size:13.5px;color:var(--ttl)">Vendor Status:</span>
+        <div class="seg" role="radiogroup" aria-label="Status">
+          <button type="button" role="radio" aria-checked="${!d.active}" class="${!d.active ? 'on' : ''}" data-act="vdActive" data-v="0">Inactive</button>
+          <button type="button" role="radio" aria-checked="${d.active}" class="${d.active ? 'on' : ''}" data-act="vdActive" data-v="1">Active</button>
         </div>
       </div>
-      <div class="o-notebook"><div class="o-tabs" role="tablist">${tabs.map(t => `<button role="tab" aria-selected="${tab === t[0]}" class="${tab === t[0] ? 'on' : ''}" data-act="vdTab" data-tab="${t[0]}">${t[1]}</button>`).join('')}</div>
-        <div class="o-pane">${tab === 'users' ? users : tab === 'qr' ? qr : meals}</div></div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        ${saved ? `<button class="btn" data-act="qrPrint" data-id="${saved.id}">Print QR poster</button>${stale ? `<button class="btn" data-act="mapRebuild" data-id="${saved.id}">Rebuild shift–meal map</button>` : ''}` : ''}
+      </div>
+    </div>
+
+    ${saved ? `<div class="kpis" style="border-left:0;border-right:0;border-radius:0">
+      <div class="kpi" data-act="vdSmartTx" data-id="${saved.id}" style="cursor:pointer"><span class="v">${txCount}</span><span class="l">Transactions</span></div>
+      <div class="kpi" data-act="vdTab" data-tab="users" style="cursor:pointer"><span class="v">${d.users.length}</span><span class="l">Portal Logins</span></div>
+      <div class="kpi" data-act="vdTab" data-tab="meals" style="cursor:pointer"><span class="v">${d.meals.length}</span><span class="l">Meal Lines</span></div>
+      <div class="kpi" data-act="vdSmartMap" data-id="${saved.id}" style="cursor:pointer"><span class="v" style="color:var(--${stale ? 'warn' : 'good'})">${stale ? 'Stale' : 'Current'}</span><span class="l">Shift–Meal Map</span></div>
+    </div>` : ''}
+
+    <div class="panel-b" style="display:flex;flex-direction:column;gap:18px">
+      ${stale ? `<div class="banner warn"><span>Timings or the at-site flag changed since the shift–meal map was built.</span><button class="btn" data-act="mapRebuild" data-id="${saved.id}">Rebuild for this vendor</button></div>` : ''}
+
+      <!-- Vendor Name Field -->
+      <label class="field">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span style="font-size:13px;font-weight:700;color:var(--ttl)">Vendor Name</span>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            ${UI.vd.portalPulled ? `<span class="badge b-good">✓ Pulled from Vendor Portal</span>` : ''}
+            <button type="button" class="btn btn-sm" data-act="vdDownloadTable" title="Download vendor data in table format (CSV)" style="font-size:12px;padding:4px 10px;display:inline-flex;align-items:center;gap:5px;font-weight:600"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download Table Data (CSV)</button>
+          </div>
+        </div>
+        <input type="text" id="vd-name" data-in="vd" data-k="name" value="${esc(d.name)}" placeholder="Vendor Name (pulled from Vendor Portal or entered)" style="font-size:15px;font-weight:600;padding:10px 14px">
+      </label>
+
+      <!-- Vendor Portal Integration Card -->
+      <div class="banner info" style="margin:0;display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:var(--radius)">
+        <div style="line-height:1.5">
+          <b>Pull from Vendor Portal:</b> Enter or choose the <b>Vendor Code</b> (e.g. <code>MUN-V06</code>, <code>DHJ-V02</code>, <code>MUN-V07</code>) and click <b>Fetch from Vendor Portal</b> to auto-populate vendor profile, site, location, meal timings and logins.
+        </div>
+        <label class="field" style="margin:0">
+          <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;color:var(--ttl)">Vendor Code</span>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input type="text" id="vd-code" data-in="vd" data-k="code" value="${esc(d.code)}" placeholder="e.g. MUN-V06, DHJ-V02" list="portal-codes" style="flex:1;min-width:200px;font-weight:700;font-size:14px;background:#ffffff">
+            <datalist id="portal-codes">
+              <option value="MUN-V06">MUN-V06 – Taj Port Caterers & Hospitality (CT1 Terminal)</option>
+              <option value="DHJ-V02">DHJ-V02 – Gujarat Coastal Food Services (Dahej Admin)</option>
+              <option value="MUN-V07">MUN-V07 – Adani Township Central Kitchen (Mundra)</option>
+              <option value="MUN-V08">MUN-V08 – Sagar Ratna Coastal Mess (Gate 4)</option>
+              <option value="DHJ-V03">DHJ-V03 – Narmada Riverfront Hospitality (Dahej Jetty 2)</option>
+            </datalist>
+            <button type="button" class="btn btn-primary" data-act="vdFetchPortal" style="white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Fetch from Vendor Portal
+            </button>
+            <button type="button" class="btn" data-act="vdDownloadTable" title="Download vendor data in table format (CSV)" style="white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Table
+            </button>
+          </div>
+          <span class="small muted" style="margin-top:2px">Enter code and click Fetch to pull registered vendor details from the enterprise Vendor Portal.</span>
+        </label>
+      </div>
+
+      <!-- 2-column Grid for Site, Location, At Site, Status -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <label class="field">
+          <span>Site</span>
+          <select id="vd-site" data-ch="vd" data-k="siteId">${A.siteOpts(d.siteId)}</select>
+        </label>
+
+        <label class="field">
+          <span>Location</span>
+          <input type="text" id="vd-loc" data-in="vd" data-k="location" value="${esc(d.location)}" placeholder="Terminal, gate or building">
+        </label>
+
+        <label class="field">
+          <span>At site (Canteen Location Type)</span>
+          <div style="display:flex;align-items:center;gap:10px;min-height:38px">
+            <label class="switch">
+              <input type="checkbox" id="vd-at" data-ch="vdBool" data-k="atSite" ${d.atSite ? 'checked' : ''}>
+              <i></i>
+              <span style="font-weight:600;font-size:13.5px">${d.atSite ? 'Canteen is inside the site' : 'Canteen is outside the site'}</span>
+            </label>
+          </div>
+          <span class="small muted">${d.atSite ? 'Employees eat here during their shift. A scan on a free day or while off duty is blocked.' : 'Employees eat here only when off duty. Leave, weekly off and not rostered count as a free day.'}</span>
+        </label>
+
+        <label class="field">
+          <span>Vendor Status</span>
+          <div style="display:flex;align-items:center;gap:10px;min-height:38px">
+            <span class="badge ${d.active ? 'b-good' : ''}">${d.active ? 'Active' : 'Inactive'}</span>
+            <span class="small muted">Change via status toggle in header</span>
+          </div>
+          <span class="small muted">An inactive vendor's QR is rejected at the scanner.</span>
+        </label>
+      </div>
+
+      <!-- Tabs & Tab Content Panel -->
+      <div style="margin-top:6px">
+        <div class="seg" role="tablist" style="margin-bottom:14px">
+          ${tabs.map(t => `<button type="button" role="tab" aria-selected="${tab === t[0]}" class="${tab === t[0] ? 'on' : ''}" data-act="vdTab" data-tab="${t[0]}">${t[1]}</button>`).join('')}
+        </div>
+        <div style="background:#ffffff;border:1px solid var(--line);border-radius:var(--radius);padding:16px">
+          ${tab === 'users' ? users : tab === 'qr' ? qr : meals}
+        </div>
+      </div>
     </div>
   </div>`;
       };
@@ -4226,6 +5143,285 @@
       ACT.vdActive = a => { VD().active = a.dataset.v === '1'; A.render(); };
       ACT.vdSmartTx = a => { const s = A.scope(); s.vendor = a.dataset.id; s.site = E().vendor(a.dataset.id).siteId; const f = A.getF('tx', {}); f.from = FU.addDays(A.now().date, -30); A.save(); A.go('tx'); };
       ACT.vdSmartMap = a => { A.getF('map', {}).vendor = a.dataset.id; A.go('map'); };
+      ACT.vdFetchPortal = () => {
+        const d = VD();
+        const codeInput = document.getElementById('vd-code');
+        const code = (codeInput ? codeInput.value : d.code || '').trim().toUpperCase();
+        if (!code) {
+          A.toast('Enter or select a Vendor Code first to pull from Vendor Portal.', 'warn');
+          return;
+        }
+        const p = fetchVendorFromPortal(code);
+        if (!p) {
+          A.toast('Vendor code not found in Vendor Portal registry.', 'bad');
+          return;
+        }
+        d.code = p.code;
+        d.name = p.name;
+        d.siteId = p.siteId;
+        d.location = p.location;
+        d.atSite = p.atSite;
+        if (p.meals && p.meals.length) {
+          d.meals = p.meals.map(m => Object.assign({ id: E().nid('ml') }, m));
+        }
+        if (p.users && p.users.length) {
+          d.users = p.users.map(u => Object.assign({ id: E().nid('vu') }, u));
+        }
+        UI.vd.portalPulled = true;
+        A.render();
+        A.toast(`✓ Pulled "${p.name}" (${p.code}) from Vendor Portal! Details populated.`, 'good');
+      };
+      ACT.vdDownloadTable = () => {
+        const d = VD();
+        if (!d) return;
+        exportVendorTable(d);
+      };
+      ACT.vdDownloadBackup = () => {
+        const d = VD();
+        if (!d) return;
+        exportVendorTable(d);
+      };
+      ACT.vdPortalModal = () => {
+        const sampleCodes = [
+          { code: 'MUN-V06', name: 'Taj Port Caterers & Hospitality Services', site: 'Mundra Port', loc: 'CT1 Terminal Central Canteen, Gate 2', at: 'At site' },
+          { code: 'DHJ-V02', name: 'Gujarat Coastal Food Services', site: 'Dahej Port', loc: 'Dahej Admin Complex Canteen', at: 'At site' },
+          { code: 'MUN-V07', name: 'Adani Township Central Kitchen', site: 'Mundra Port', loc: 'Shantigram Township Community Hall', at: 'Off site' },
+          { code: 'MUN-V08', name: 'Sagar Ratna Coastal Mess', site: 'Mundra Port', loc: 'Gate 4 Industrial Mess Block', at: 'Off site' },
+          { code: 'DHJ-V03', name: 'Narmada Riverfront Hospitality', site: 'Dahej Port', loc: 'Dahej Jetty 2 Operational Canteen', at: 'At site' }
+        ];
+        A.modal('Fetch Vendor from Vendor Portal', `
+    <p class="muted">Enter or select the registered <b>Vendor Code</b> to automatically pull company profile, site, canteen location, contracted meal lines, rates, and logins from the enterprise Vendor Portal.</p>
+    <div style="margin:14px 0">
+      <label class="field"><span>Enter Vendor Code</span>
+        <input type="text" id="vp-code-input" placeholder="e.g. MUN-V06, DHJ-V02" list="vp-samples" style="font-size:15px;font-weight:600">
+        <datalist id="vp-samples">${sampleCodes.map(s => `<option value="${s.code}">${s.name} (${s.site})</option>`).join('')}</datalist>
+      </label>
+    </div>
+    <div style="background:#f8fafc;padding:12px;border:1px solid var(--line);border-radius:var(--radius);margin-top:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px">
+          <button type="button" class="btn btn-sm btn-primary" id="vp-select-all-btn" onclick="window.App.ACT.vpSelectAll()" style="font-size:11px;padding:3px 10px;font-weight:600;display:inline-flex;align-items:center;gap:4px;cursor:pointer">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Select All
+          </button>
+          <b style="font-size:12px;color:var(--ink-2)">Available in Vendor Portal Registry:</b>
+        </div>
+        <span id="vp-selection-count" class="badge small muted" style="display:none">0 selected</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        ${sampleCodes.map(s => `
+          <div class="vp-row" id="vp-row-${s.code}" style="display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#ffffff;border:1px solid var(--line);border-radius:6px;font-size:12px;transition:all 0.15s">
+            <div style="display:flex;align-items:center;gap:10px;flex:1">
+              <input type="checkbox" class="vp-check" data-code="${s.code}" onchange="window.App.ACT.vpUpdateFromChecks()" style="cursor:pointer;accent-color:var(--pri);width:15px;height:15px;margin:0">
+              <div>
+                <b style="color:var(--pri)">${s.code}</b> – <b>${esc(s.name)}</b>
+                <div class="small muted">${esc(s.loc)} • ${s.site} • <span class="badge small">${s.at}</span></div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-sm" onclick="window.App.ACT.vpPickSingle('${s.code}')">Select</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `, `
+    <button class="btn" data-act="closeModal">Cancel</button>
+    <button class="btn btn-primary" id="vp-confirm-btn" data-act="vdPortalModalConfirm">Fetch & Configure Vendor</button>
+  `);
+      };
+
+      ACT.vpSelectAll = () => {
+        const checks = document.querySelectorAll('.vp-check');
+        const btn = document.getElementById('vp-select-all-btn');
+        const input = document.getElementById('vp-code-input');
+        const countBadge = document.getElementById('vp-selection-count');
+        const confirmBtn = document.getElementById('vp-confirm-btn');
+        
+        const allChecked = checks.length > 0 && Array.from(checks).every(c => c.checked);
+        const shouldCheck = !allChecked;
+
+        const selectedCodes = [];
+        checks.forEach(c => {
+          c.checked = shouldCheck;
+          const row = document.getElementById('vp-row-' + c.dataset.code);
+          if (row) {
+            row.style.background = shouldCheck ? 'var(--pri-soft)' : '#ffffff';
+            row.style.borderColor = shouldCheck ? 'var(--pri)' : 'var(--line)';
+          }
+          if (shouldCheck) selectedCodes.push(c.dataset.code);
+        });
+
+        if (input) input.value = selectedCodes.join(', ');
+        if (btn) {
+          btn.innerHTML = shouldCheck ? `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Deselect All
+          ` : `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Select All
+          `;
+          btn.className = shouldCheck ? 'btn btn-sm btn-outline' : 'btn btn-sm btn-primary';
+        }
+        if (countBadge) {
+          countBadge.style.display = shouldCheck ? 'inline-block' : 'none';
+          countBadge.textContent = `${selectedCodes.length} selected`;
+        }
+        if (confirmBtn) {
+          confirmBtn.textContent = shouldCheck ? `Fetch & Configure ${selectedCodes.length} Vendors` : 'Fetch & Configure Vendor';
+        }
+      };
+
+      ACT.vpUpdateFromChecks = () => {
+        const checks = document.querySelectorAll('.vp-check');
+        const input = document.getElementById('vp-code-input');
+        const countBadge = document.getElementById('vp-selection-count');
+        const btn = document.getElementById('vp-select-all-btn');
+        const confirmBtn = document.getElementById('vp-confirm-btn');
+
+        const selectedCodes = [];
+        checks.forEach(c => {
+          const row = document.getElementById('vp-row-' + c.dataset.code);
+          if (c.checked) {
+            selectedCodes.push(c.dataset.code);
+            if (row) {
+              row.style.background = 'var(--pri-soft)';
+              row.style.borderColor = 'var(--pri)';
+            }
+          } else if (row) {
+            row.style.background = '#ffffff';
+            row.style.borderColor = 'var(--line)';
+          }
+        });
+
+        if (input) input.value = selectedCodes.join(', ');
+        if (countBadge) {
+          countBadge.style.display = selectedCodes.length ? 'inline-block' : 'none';
+          countBadge.textContent = `${selectedCodes.length} selected`;
+        }
+        if (btn) {
+          const allChecked = selectedCodes.length === checks.length && checks.length > 0;
+          btn.innerHTML = allChecked ? `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            Deselect All
+          ` : `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Select All
+          `;
+          btn.className = allChecked ? 'btn btn-sm btn-outline' : 'btn btn-sm btn-primary';
+        }
+        if (confirmBtn) {
+          confirmBtn.textContent = selectedCodes.length > 1 ? `Fetch & Configure ${selectedCodes.length} Vendors` : 'Fetch & Configure Vendor';
+        }
+      };
+
+      ACT.vpPickSingle = code => {
+        const input = document.getElementById('vp-code-input');
+        if (input) input.value = code;
+        const checks = document.querySelectorAll('.vp-check');
+        checks.forEach(c => {
+          c.checked = (c.dataset.code === code);
+          const row = document.getElementById('vp-row-' + c.dataset.code);
+          if (row) {
+            row.style.background = c.checked ? 'var(--pri-soft)' : '#ffffff';
+            row.style.borderColor = c.checked ? 'var(--pri)' : 'var(--line)';
+          }
+        });
+        const countBadge = document.getElementById('vp-selection-count');
+        if (countBadge) {
+          countBadge.style.display = 'inline-block';
+          countBadge.textContent = `1 selected`;
+        }
+        const confirmBtn = document.getElementById('vp-confirm-btn');
+        if (confirmBtn) confirmBtn.textContent = 'Fetch & Configure Vendor';
+      };
+
+      ACT.vdPortalModalConfirm = () => {
+        const input = document.getElementById('vp-code-input');
+        const raw = (input ? input.value : '').trim();
+        if (!raw) {
+          A.toast('Please enter or select a Vendor Code.', 'warn');
+          return;
+        }
+
+        const codes = raw.split(/[,;\s]+/).map(s => s.trim().toUpperCase()).filter(Boolean);
+        if (!codes.length) {
+          A.toast('Please enter or select a valid Vendor Code.', 'warn');
+          return;
+        }
+
+        if (codes.length === 1) {
+          const code = codes[0];
+          const p = fetchVendorFromPortal(code);
+          if (!p) {
+            A.toast('Vendor not found in portal registry.', 'bad');
+            return;
+          }
+          A.closeModal();
+          UI.vd = {
+            key: 'new',
+            data: {
+              id: null,
+              code: p.code,
+              name: p.name,
+              siteId: p.siteId,
+              location: p.location,
+              atSite: p.atSite,
+              active: true,
+              qrToken: null,
+              meals: (p.meals || []).map(m => Object.assign({ id: E().nid('ml') }, m)),
+              users: (p.users || []).map(u => Object.assign({ id: E().nid('vu') }, u))
+            },
+            errors: [],
+            portalPulled: true
+          };
+          exportVendorTable(UI.vd.data);
+          A.go('vendor/new');
+          A.toast(`✓ Pulled "${p.name}" (${p.code}) from Vendor Portal! Details populated & backup table downloaded.`, 'good');
+          return;
+        }
+
+        // Multiple vendors selected (e.g. via Select All)
+        const e = E(), db = DB();
+        const pulled = [];
+        codes.forEach(code => {
+          const p = fetchVendorFromPortal(code);
+          if (!p) return;
+          let v = db.vendors.find(x => x.code === p.code);
+          if (!v) {
+            v = {
+              id: e.nid('ven'),
+              code: p.code,
+              name: p.name,
+              siteId: p.siteId,
+              location: p.location,
+              atSite: p.atSite,
+              active: true,
+              qrToken: token(Math.random),
+              meals: (p.meals || []).map(m => Object.assign({ id: e.nid('ml') }, m)),
+              users: (p.users || []).map(u => Object.assign({ id: e.nid('vu') }, u))
+            };
+            db.vendors.push(v);
+          } else {
+            v.name = p.name;
+            v.siteId = p.siteId;
+            v.location = p.location;
+            v.atSite = p.atSite;
+            v.meals = (p.meals || []).map(m => Object.assign({ id: e.nid('ml') }, m));
+            v.users = (p.users || []).map(u => Object.assign({ id: e.nid('vu') }, u));
+          }
+          pulled.push(v);
+        });
+
+        if (!pulled.length) {
+          A.toast('No matching vendors found in registry for the given codes.', 'bad');
+          return;
+        }
+
+        exportVendorTable(pulled);
+        A.save();
+        A.closeModal();
+        A.go('vendors');
+        A.toast(`✓ Successfully imported & configured ${pulled.length} vendors from Vendor Portal! Backup data table downloaded.`, 'good');
+      };
       const VD = () => UI.vd.data;
       CH.vd = t => { VD()[t.dataset.k] = t.value; };
       CH.vdBool = t => { VD()[t.dataset.k] = t.checked; A.render(); };
@@ -4321,7 +5517,7 @@
     ${db.shifts.map(s => `<tr><td class="nowrap"><b style="font-weight:500">${esc(s.code)}</b> <span class="small muted">${hhmm(s.start)}–${hhmm(s.end)}</span></td>${ms.map(m => { const r = rows.find(x => x.shift === s.id && x.meal === m.id); return `<td>${r ? cell(r.segs) : '<span class="faint small">Rebuild to add</span>'}</td>`; }).join('')}</tr>`).join('')}
     <tr class="muted-row"><td>Free day<div class="small">Leave, weekly off, not rostered</div></td>${ms.map(m => { const line = v.meals.find(x => x.meal === m.id); return `<td>${line ? (v.atSite ? '<span class="map-cell no">Not eligible</span>' : `<span class="map-cell ok">${hhmm(line.start)}–${hhmm(line.end)}</span>`) : ''}</td>`; }).join('')}</tr>
   </tbody></table></div>` : `<div class="empty"><h3>Map not built for ${esc(v.name)}</h3><p>Rebuild the map to see which meals each shift can take here.</p></div>`}
-  <div class="more">Half-day leave and OT change the real windows for a single day; the scan engine applies them. See the day view in the <a href="#/sim">scan test console</a>.</div></div>`;
+  <div class="more">Half-day leave and OT change the real windows for a single day; the scan engine applies them.</div></div>`;
       };
       ACT.mapRebuild = a => { const id = a.dataset.id; E().buildMap(id ? [id] : null); A.save(); A.render(); A.toast(id ? 'Map rebuilt for ' + E().vendor(id).name + '.' : 'Map rebuilt for all vendors.', 'good'); };
     })();
@@ -4633,23 +5829,51 @@
       };
       ACT.gTab = a => { A.getF('gst', {}).tab = a.dataset.tab; A.render(); };
       ACT.gEdit = a => {
-        const db = DB(), n = A.now(), g = a.dataset.id ? E().guest(a.dataset.id) : { name: '', mobile: '', org: '', host: '', from: n.date, to: n.date, meals: ['BF', 'LU', 'DN'] };
-        A.modal(a.dataset.id ? 'Edit guest ' + esc(g.code) : 'New guest', `<div class="sheet-grid">
-    <label class="field"><span>Name</span><input type="text" id="g-name" value="${esc(g.name)}"></label>
-    <label class="field"><span>Mobile</span><input type="text" id="g-mobile" value="${esc(g.mobile)}" inputmode="numeric" placeholder="10 digits"></label>
-    <label class="field"><span>Organisation</span><input type="text" id="g-org" value="${esc(g.org)}"></label>
-    <label class="field"><span>Host employee (optional)</span><select id="g-host">${A.empOpts(g.host, 'No host')}</select></label>
-    <label class="field"><span>From date</span><input type="date" id="g-from" value="${g.from}"></label>
-    <label class="field"><span>To date</span><input type="date" id="g-to" value="${g.to}"></label></div>
+        const db = DB(), n = A.now(), g = a.dataset.id ? E().guest(a.dataset.id) : { name: '', mobile: '', org: '', host: '', purpose: '', aadhaar: '', photo: '', from: n.date, to: n.date, meals: ['BF', 'LU', 'DN'] };
+        window.gEditPhotoUrl = (g.aadhaarPhoto || g.photo) || '';
+        A.modal(a.dataset.id ? 'Edit guest ' + esc(g.code) : 'New guest', `
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:12px;background:#f8fafc;border:1px solid var(--line);border-radius:var(--radius)">
+      <div id="gedit-aadhaar-prev" style="width:72px;height:48px;border-radius:6px;background:#ffffff;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1.5px dashed var(--pri);flex-shrink:0">
+        ${(g.aadhaarPhoto || g.photo) ? `<img src="${g.aadhaarPhoto || g.photo}" style="width:100%;height:100%;object-fit:cover" alt="Aadhaar Card Photo">` : '<span style="font-size:20px">🪪</span>'}
+      </div>
+      <div style="flex:1">
+        <label class="field" style="margin:0"><span style="font-size:12px;font-weight:600">Upload Aadhaar Card Photo</span><input type="file" id="gedit-photo" accept="image/*" style="font-size:11px;margin-top:2px" data-ch="gEditAadhaarFile"></label>
+      </div>
+    </div>
+    <div class="sheet-grid">
+      <label class="field"><span>Name *</span><input type="text" id="g-name" value="${esc(g.name)}"></label>
+      <label class="field"><span>Mobile *</span><input type="text" id="g-mobile" value="${esc(g.mobile)}" inputmode="numeric" placeholder="10 digits"></label>
+      <label class="field"><span>Aadhaar Number *</span><input type="text" id="g-aadhaar" value="${esc(g.aadhaar || '')}" inputmode="numeric" placeholder="12-digit Aadhaar"></label>
+      <label class="field"><span>Organisation</span><input type="text" id="g-org" value="${esc(g.org)}"></label>
+      <label class="field"><span>Person Visiting (Host) *</span><select id="g-host">${A.empOpts(g.host, 'Select Employee / Host')}</select></label>
+      <label class="field"><span>Purpose of Visit *</span><input type="text" id="g-purpose" value="${esc(g.purpose || '')}" placeholder="e.g. Official Meeting, Audit"></label>
+      <label class="field"><span>From date *</span><input type="date" id="g-from" value="${g.from}"></label>
+      <label class="field"><span>To date *</span><input type="date" id="g-to" value="${g.to}"></label>
+    </div>
     <div class="field" style="margin-top:14px"><span>Meals</span><div class="chips">${A.meals().map(m => `<label class="chip ${g.meals.includes(m.id) ? 'on' : ''}"><input type="checkbox" class="g-meal" value="${m.id}" ${g.meals.includes(m.id) ? 'checked' : ''} data-ch="chipToggle" style="margin:0 4px 0 0">${esc(m.name)}</label>`).join('')}</div></div>
     <p class="err" id="g-err" role="alert" style="margin-top:10px"></p>`,
           `<button class="btn" data-act="closeModal">Cancel</button><button class="btn btn-primary" data-act="gSave" data-id="${a.dataset.id || ''}">Save guest</button>`);
       };
       CH.chipToggle = t => t.closest('.chip').classList.toggle('on', t.checked);
+      CH.gEditAadhaarFile = t => {
+        const f = t.files && t.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = e => {
+          window.gEditPhotoUrl = e.target.result;
+          const prev = document.getElementById('gedit-aadhaar-prev');
+          if (prev) prev.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover" alt="Aadhaar Card Photo">`;
+        };
+        r.readAsDataURL(f);
+      };
       function guestErrors(g) {
         const err = [];
         if (!g.name) err.push('Enter the guest name.');
         if (!/^\d{10}$/.test(g.mobile)) err.push('Enter a 10-digit mobile number.');
+        const aadh = String(g.aadhaar || '').replace(/\D/g, '');
+        if (g.aadhaar && aadh.length !== 12) err.push('Enter a valid 12-digit Aadhaar number.');
+        if (!g.host) err.push('Select the person (employee) the guest is visiting.');
+        if (!g.purpose) err.push('Enter the purpose of visit.');
         if (!g.from || !g.to) err.push('Enter valid from and to dates.');
         else if (g.to < g.from) err.push('The to date must be on or after the from date.');
         if (!g.meals.length) err.push('Choose at least one meal.');
@@ -4658,11 +5882,27 @@
       const cleanMobile = s => { const d = String(s || '').replace(/\D/g, ''); return d.length > 10 ? d.slice(-10) : d; };
       ACT.gSave = a => {
         const db = DB(), id = a.dataset.id;
-        const g = { name: document.getElementById('g-name').value.trim(), mobile: cleanMobile(document.getElementById('g-mobile').value), org: document.getElementById('g-org').value.trim(), host: document.getElementById('g-host').value || null, from: document.getElementById('g-from').value, to: document.getElementById('g-to').value, meals: [...document.querySelectorAll('.g-meal:checked')].map(x => x.value) };
+        const aadhRaw = document.getElementById('g-aadhaar') ? document.getElementById('g-aadhaar').value.replace(/\D/g, '') : '';
+        const formattedAadh = aadhRaw.length === 12 ? aadhRaw.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3') : aadhRaw;
+        const savedPhoto = window.gEditPhotoUrl || (id && E().guest(id) ? (E().guest(id).aadhaarPhoto || E().guest(id).photo) : '');
+        const g = {
+          name: document.getElementById('g-name').value.trim(),
+          mobile: cleanMobile(document.getElementById('g-mobile').value),
+          aadhaar: formattedAadh,
+          org: document.getElementById('g-org').value.trim(),
+          host: document.getElementById('g-host').value || null,
+          purpose: document.getElementById('g-purpose') ? document.getElementById('g-purpose').value.trim() : 'Official Visit',
+          aadhaarPhoto: savedPhoto,
+          photo: savedPhoto,
+          from: document.getElementById('g-from').value,
+          to: document.getElementById('g-to').value,
+          meals: [...document.querySelectorAll('.g-meal:checked')].map(x => x.value)
+        };
         const err = guestErrors(g);
         if (err.length) { document.getElementById('g-err').textContent = err.join(' '); return; }
         if (id) Object.assign(E().guest(id), g);
         else db.guests.push(Object.assign({ id: E().nid('gst'), code: nextGuestCode(), uploadId: null }, g));
+        window.gEditPhotoUrl = '';
         A.save(); A.closeModal(); A.render(); A.toast('Guest saved.', 'good');
       };
       function nextGuestCode() { const db = DB(); db.seq.gcode = (db.seq.gcode || 0) + 1; return 'G-' + String(db.seq.gcode).padStart(4, '0'); }
@@ -4710,22 +5950,49 @@
         const canteenTypes = ['Breakfast', 'Lunch', 'Snacks', 'Dinner'];
         return A.ph('Add Guest', '', `<button class="btn" data-act="go" data-to="guestview">View All Guests</button>`, {}) +
           `<div class="panel">
-  <div class="panel-h"><h2>Add Guest Details</h2></div>
-  <form id="gadd-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px" onsubmit="return false">
-    <label class="field"><span>Guest Name <span style="color:var(--bad)">*</span></span><input type="text" id="gadd-name" placeholder="Full name"></label>
-    <label class="field"><span>Contact Number <span style="color:var(--bad)">*</span></span><input type="text" id="gadd-phone" inputmode="numeric" placeholder="10-digit mobile"></label>
+  <div class="panel-h"><h2>Add Guest Details</h2><span class="small muted">Register guest visit and canteen meal authorization</span></div>
+  <form id="gadd-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px" onsubmit="return false">
+    <label class="field"><span>Guest Name <span style="color:var(--bad)">*</span></span><input type="text" id="gadd-name" placeholder="Full name of guest"></label>
+    <label class="field"><span>Contact Number <span style="color:var(--bad)">*</span></span><input type="text" id="gadd-phone" inputmode="numeric" placeholder="10-digit mobile number"></label>
+    
+    <label class="field"><span>Aadhaar Number <span style="color:var(--bad)">*</span></span><input type="text" id="gadd-aadhaar" inputmode="numeric" maxlength="14" placeholder="12-digit Aadhaar number (e.g. 1234 5678 9012)"></label>
+    <label class="field"><span>Organisation / Company</span><input type="text" id="gadd-org" placeholder="Company or firm name"></label>
+
+    <label class="field"><span>Person Visiting (Host Employee) <span style="color:var(--bad)">*</span></span>
+      <select id="gadd-host">
+        <option value="">Select employee being visited</option>
+        ${db.employees.map(x => `<option value="${x.id}">${esc(x.code)} – ${esc(x.name)} (${esc(x.designation)} • ${esc(e.site(x.siteId).name)})</option>`).join('')}
+      </select>
+    </label>
+    <label class="field"><span>Purpose of Visit <span style="color:var(--bad)">*</span></span>
+      <input type="text" id="gadd-purpose" placeholder="e.g. Official Meeting, Technical Support, Audit, Inspection">
+    </label>
+
     <label class="field"><span>Duration – From Date <span style="color:var(--bad)">*</span></span><input type="date" id="gadd-from" value="${n.date}"></label>
     <label class="field"><span>Duration – To Date <span style="color:var(--bad)">*</span></span><input type="date" id="gadd-to" value="${n.date}"></label>
+
     <label class="field" style="grid-column:1/-1"><span>Canteen Type / Meal Access</span>
       <select id="gadd-mealtype">
         <option value="all">All meals (Breakfast, Lunch, Snacks, Dinner)</option>
         ${canteenTypes.map(t => `<option value="${t}">${t} only</option>`).join('')}
-      </select></label>
+      </select>
+    </label>
+
+    <div style="grid-column:1/-1;display:flex;align-items:center;gap:16px;background:#f8fafc;padding:14px;border:1px solid var(--line);border-radius:var(--radius);margin-top:4px">
+      <div id="gadd-aadhaar-prev" style="width:96px;height:62px;border-radius:6px;background:#ffffff;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1.5px dashed var(--pri);flex-shrink:0">
+        <span style="font-size:24px">🪪</span>
+      </div>
+      <div style="flex:1">
+        <label class="field" style="margin:0">
+          <span style="font-weight:600">Upload Aadhaar Card Photo</span>
+          <input type="file" id="gadd-aadhaar-file" accept="image/*" style="font-size:12px;margin-top:4px" data-ch="gaddAadhaarFile">
+        </label>
+      </div>
+    </div>
 
     <p class="err" id="gadd-err" role="alert" style="grid-column:1/-1;margin:0"></p>
-    <div style="grid-column:1/-1;display:flex;gap:10px">
-      <button class="btn btn-primary" data-act="gaddSave">Add Guest</button>
-      <button class="btn" type="reset" onclick="document.getElementById('gadd-err').textContent=''">Clear</button>
+    <div style="grid-column:1/-1;display:flex;gap:10px;margin-top:6px">
+      <button class="btn btn-primary btn-lg" data-act="gaddSave">Add Guest</button>
     </div>
   </form>
 </div>`;
@@ -4734,27 +6001,66 @@
       CH.gaddVendor = t => { A.getF('gadd', {}).vendor = t.value; A.render(); };
       CH.gaddDate = t => { A.getF('gadd', {}).date = t.value; A.render(); };
       CH.gaddCanteenType = t => { A.getF('gadd', {}).canteenType = t.value; A.render(); };
+      CH.gaddAadhaarFile = t => {
+        const f = t.files && t.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = e => {
+          window.gaddAadhaarPhotoUrl = e.target.result;
+          const prev = document.getElementById('gadd-aadhaar-prev');
+          if (prev) {
+            prev.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:4px" alt="Aadhaar Card Photo">`;
+          }
+        };
+        r.readAsDataURL(f);
+      };
       ACT.gaddSave = () => {
         const errEl = document.getElementById('gadd-err');
         const name = document.getElementById('gadd-name').value.trim();
         const phone = document.getElementById('gadd-phone').value.replace(/\D/g, '').slice(-10);
+        const aadhaarRaw = document.getElementById('gadd-aadhaar').value.replace(/\D/g, '');
+        const org = document.getElementById('gadd-org').value.trim();
+        const host = document.getElementById('gadd-host').value;
+        const purpose = document.getElementById('gadd-purpose').value.trim();
         const from = document.getElementById('gadd-from').value;
         const to = document.getElementById('gadd-to').value;
         const mealtype = document.getElementById('gadd-mealtype').value;
+        const aadhaarPhoto = window.gaddAadhaarPhotoUrl || '';
 
         const errs = [];
         if (!name) errs.push('Enter the guest name.');
         if (!/^\d{10}$/.test(phone)) errs.push('Enter a valid 10-digit mobile number.');
+        if (!aadhaarRaw || aadhaarRaw.length !== 12) errs.push('Enter a valid 12-digit Aadhaar number.');
+        if (!host) errs.push('Select the person (employee) the guest is visiting.');
+        if (!purpose) errs.push('Enter the purpose of visit.');
         if (!from || !to) errs.push('Select both from and to dates.');
         else if (to < from) errs.push('To date must be on or after from date.');
+
         if (errs.length) { errEl.textContent = errs.join(' '); return; }
         const mealMap = { all: ['BF', 'LU', 'SN', 'DN'], Breakfast: ['BF'], Lunch: ['LU'], Snacks: ['SN'], Dinner: ['DN'] };
         const db = DB();
-        db.guests.push({ id: E().nid('gst'), code: nextGuestCode(), name, mobile: phone, org: '', host: null, from, to, meals: mealMap[mealtype] || ['BF', 'LU', 'SN', 'DN'], uploadId: null });
-        A.save(); A.render();
+        const formattedAadhaar = aadhaarRaw.replace(/(\d{4})(\d{4})(\d{4})/, '$1 $2 $3');
+        db.guests.push({
+          id: E().nid('gst'),
+          code: nextGuestCode(),
+          name,
+          mobile: phone,
+          aadhaar: formattedAadhaar,
+          aadhaarPhoto,
+          photo: aadhaarPhoto,
+          org: org || 'Visitor',
+          host,
+          purpose,
+          from,
+          to,
+          meals: mealMap[mealtype] || ['BF', 'LU', 'SN', 'DN'],
+          uploadId: null
+        });
+        window.gaddAadhaarPhotoUrl = '';
+        A.save();
+        A.render();
         A.toast('Guest ' + name + ' added successfully.', 'good');
-        document.getElementById('gadd-form').reset();
-        document.getElementById('gadd-err').textContent = '';
+        A.go('guestview');
       };
 
       P.guestview = () => {
@@ -4800,11 +6106,26 @@
             }
             const filtered = f.tab === 'active' ? rows.filter(g => g.from <= f.date && g.to >= f.date) : rows;
             if (!filtered.length) return '<div class="empty"><h3>No guests found</h3><p>Try adjusting the filters or add a new guest.</p></div>';
-            return `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Code</th><th>Name</th><th>Mobile</th><th>Organisation</th><th>Duration</th><th>Meal Access</th><th>Meals Taken</th><th>Status</th><th></th></tr></thead><tbody>${filtered.map(g => {
+            return `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Guest</th><th>Contact & Aadhaar</th><th>Person Visiting (Host)</th><th>Purpose of Visit</th><th>Organisation</th><th>Duration</th><th>Meal Access</th><th>Meals Taken</th><th>Status</th><th></th></tr></thead><tbody>${filtered.map(g => {
               const st = guestStatus(g, n.date);
               const taken = txByGuest(g.id).length;
               const mealNames = g.meals.map(m => mealIdMap[m] || m).join(', ');
-              return `<tr><td class="nowrap">${esc(g.code)}</td><td>${esc(g.name)}</td><td class="nowrap">${esc(g.mobile)}</td><td class="small">${esc(g.org || '\u2013')}</td><td class="nowrap small">${fmtDay(g.from)} \u2013 ${fmtDay(g.to)}</td><td class="small">${esc(mealNames)}</td><td class="num">${taken}</td><td><span class="badge ${st[1]}">${st[0]}</span></td><td class="nowrap"><button class="btn btn-link" data-act="gEdit" data-id="${g.id}">Edit</button></td></tr>`;
+              const hostEmp = g.host ? e.emp(g.host) : null;
+              const avatar = g.photo
+                ? `<img src="${g.photo}" alt="${esc(g.name)}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0">`
+                : `<div style="width:36px;height:36px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#475569;font-weight:600;flex-shrink:0">${esc(g.name.slice(0, 1))}</div>`;
+              return `<tr>
+                <td><div class="row" style="gap:10px;align-items:center;flex-wrap:nowrap">${avatar}<div><b style="font-weight:600">${esc(g.name)}</b><div class="small muted">${esc(g.code)}</div></div></div></td>
+                <td><div>${esc(g.mobile)}</div><div class="small muted">${g.aadhaar ? 'Aadhaar: ' + esc(g.aadhaar) : '<span class="faint">No Aadhaar</span>'}</div></td>
+                <td>${hostEmp ? `<b>${esc(hostEmp.name)}</b><div class="small muted">${esc(hostEmp.code)} • ${esc(hostEmp.designation)}</div>` : '<span class="faint">–</span>'}</td>
+                <td><b>${esc(g.purpose || 'Official Visit')}</b></td>
+                <td class="small">${esc(g.org || '–')}</td>
+                <td class="nowrap small">${fmtDay(g.from)} – ${fmtDay(g.to)}</td>
+                <td class="small">${esc(mealNames)}</td>
+                <td class="num">${taken}</td>
+                <td><span class="badge ${st[1]}">${st[0]}</span></td>
+                <td class="nowrap"><button class="btn btn-link" data-act="gEdit" data-id="${g.id}">Edit</button></td>
+              </tr>`;
             }).join('')
               }</tbody></table></div>`;
           })()}
@@ -4819,55 +6140,96 @@
       /* ---------- food admin ---------- */
       P.foodadmin = () => {
         const db = DB(), e = E(), n = A.now();
-        const f = A.getF('fadm', { site: '', date: n.date });
+        const f = A.getF('fadm', { site: '', period: 'FTD', date: n.date, from: n.date, to: n.date });
+        if (!f.period) f.period = 'FTD';
+        if (f.period === 'FTD') { f.from = n.date; f.to = n.date; f.date = n.date; }
+        else if (f.period === 'MTD') { f.from = n.date.slice(0, 7) + '-01'; f.to = n.date; }
+        else if (f.period === 'YTD') { f.from = n.date.slice(0, 4) + '-01-01'; f.to = n.date; }
+        else if (f.period === 'custom') { f.from = f.from || n.date; f.to = f.to || n.date; }
+
         const sites = [...new Set(db.employees.map(x => x.siteId))].map(sid => e.site(sid)).filter(Boolean);
-        const selectedDate = f.date || n.date;
         const txRows = db.transactions.filter(t => {
           if (t.state !== 'done') return false;
           if (f.site) {
             const vObj = e.vendor(t.vendor);
             if (!vObj || vObj.siteId !== f.site) return false;
           }
-          if (f.date && t.mealDate !== f.date) return false;
+          if (t.mealDate < f.from || t.mealDate > f.to) return false;
           return true;
-        }).sort((a, b) => b.min - a.min);
+        }).sort((a, b) => (b.mealDate > a.mealDate ? 1 : b.mealDate < a.mealDate ? -1 : b.min - a.min));
+
         const kpi = (label, val, tone) => `<div class="kpi"><span class="v" style="color:var(--${tone || 'ttl'})">${val}</span><span class="l">${label}</span></div>`;
         const paid = txRows.filter(t => t.status !== 'chargeable').length;
         const chg = txRows.filter(t => t.status === 'chargeable').length;
         const rev = txRows.filter(t => t.status === 'chargeable').reduce((s, t) => s + (t.rate || 0), 0);
+
+        const activeRangeLabel = f.period === 'FTD'
+          ? `Today: ${fmtDate(n.date)}`
+          : f.period === 'MTD'
+            ? `MTD: ${fmtDate(f.from)} – ${fmtDate(f.to)}`
+            : f.period === 'YTD'
+              ? `YTD: ${fmtDate(f.from)} – ${fmtDate(f.to)}`
+              : `Custom: ${fmtDate(f.from)} – ${fmtDate(f.to)}`;
+
         return A.ph('Food Admin', '', `<button class="btn btn-primary" data-act="go" data-to="guestview">View Guests</button>`, {}) +
-          `<div class="panel" style="margin-bottom:16px">
-  <div class="panel-h"><h2>Admin Filters</h2></div>
-  <div class="o-form" style="padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end">
+          `<div class="panel" style="margin-bottom:16px"><div class="filters" style="border-bottom:0;border-radius:var(--radius);display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;padding:14px 16px">
     <label class="field"><span>Site</span>
       <select id="fadm-site" data-ch="fadmSite">
         <option value="">All sites</option>
         ${sites.map(s => `<option value="${esc(s.id)}" ${f.site === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}
-      </select></label>
-    <label class="field"><span>Date</span>
-      <input type="date" id="fadm-date" value="${f.date}" data-ch="fadmDate"></label>
-  </div>
-</div>
+      </select>
+    </label>
+    <div class="field" style="margin-bottom:0">
+      <span style="font-size:11px;font-weight:700;color:var(--ink-2);text-transform:uppercase;letter-spacing:0.4px">Period</span>
+      <div class="seg" role="tablist" style="margin:0;display:inline-flex">
+        <button type="button" role="tab" class="${f.period === 'FTD' ? 'on' : ''}" data-act="fadmPeriod" data-p="FTD" style="font-size:12px;padding:5px 12px;font-weight:600">FTD</button>
+        <button type="button" role="tab" class="${f.period === 'MTD' ? 'on' : ''}" data-act="fadmPeriod" data-p="MTD" style="font-size:12px;padding:5px 12px;font-weight:600">MTD</button>
+        <button type="button" role="tab" class="${f.period === 'YTD' ? 'on' : ''}" data-act="fadmPeriod" data-p="YTD" style="font-size:12px;padding:5px 12px;font-weight:600">YTD</button>
+        <button type="button" role="tab" class="${f.period === 'custom' ? 'on' : ''}" data-act="fadmPeriod" data-p="custom" style="font-size:12px;padding:5px 12px;font-weight:600">Custom Range</button>
+      </div>
+    </div>
+    ${f.period === 'custom' ? `
+      <label class="field"><span>From Date</span><input type="date" id="fadm-from" value="${f.from}" data-ch="fadmFrom"></label>
+      <label class="field"><span>To Date</span><input type="date" id="fadm-to" value="${f.to}" data-ch="fadmTo"></label>
+    ` : ''}
+    <div class="small muted" style="margin-left:auto;font-weight:600;display:flex;align-items:center;gap:5px;align-self:center;padding-top:14px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>${activeRangeLabel}</span>
+    </div>
+  </div></div>
 <div class="kpis" style="margin-bottom:16px">
-  ${kpi('Total Transactions', txRows.length)}
-  ${kpi('Company-Paid', paid, 'good')}
+  ${kpi('Total Transactions', txRows.length, activeRangeLabel)}
+  ${kpi('Entitled', paid, 'good')}
   ${kpi('Chargeable', chg, 'warn')}
   ${kpi('Chargeable Revenue', money(rev), 'warn')}
 </div>
 <div class="panel">
   <div class="panel-h"><h2>Transaction Log</h2><span class="badge">${txRows.length} records</span></div>
-  ${txRows.length ? `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Ref</th><th>Date</th><th>Time</th><th>Person</th><th>Type</th><th>Vendor</th><th>Meal</th><th>Status</th><th class="num">Amount</th></tr></thead><tbody>${txRows.map(t => {
+  ${txRows.length ? `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Ref</th><th>Date</th><th>Time</th><th>Person</th><th>Emp ID</th><th>Type</th><th>Vendor</th><th>Meal</th><th>Status</th><th class="num">Amount</th></tr></thead><tbody>${txRows.map(t => {
             const emp = t.emp ? e.emp(t.emp) : null;
             const guest = t.guest ? db.guests.find(g => g.id === t.guest) : null;
             const vend = e.vendor(t.vendor) || {};
             const ml = e.meal(t.meal) || {};
-            return `<tr><td class="nowrap small">${esc(t.ref)}</td><td class="nowrap">${fmtDay(t.mealDate)}</td><td class="nowrap">${hhmm(t.min)}</td><td>${emp ? esc(emp.name) : guest ? esc(guest.name) + ' <span class="badge">Guest</span>' : '\u2013'}</td><td><span class="badge">${t.emp ? 'Employee' : 'Guest'}</span></td><td class="small">${esc(vend.name || '')}</td><td>${esc(ml.name || '')}</td><td><span class="badge ${t.status === 'chargeable' ? 'b-warn' : 'b-good'}">${t.status === 'chargeable' ? 'Chargeable' : 'Company-paid'}</span></td><td class="num">${t.status === 'chargeable' ? money(t.rate) : '\u2013'}</td></tr>`;
+            return `<tr><td class="nowrap small">${esc(t.ref)}</td><td class="nowrap">${fmtDay(t.mealDate)}</td><td class="nowrap">${hhmm(t.min)}</td><td>${emp ? esc(emp.name) : guest ? esc(guest.name) + ' <span class="badge">Guest</span>' : '\u2013'}</td><td><b class="nowrap">${emp ? esc(emp.code) : guest ? esc(guest.code) : '\u2013'}</b></td><td><span class="badge">${t.emp ? 'Employee' : 'Guest'}</span></td><td class="small">${esc(vend.name || '')}</td><td>${esc(ml.name || '')}</td><td><span class="badge ${t.status === 'chargeable' ? 'b-warn' : 'b-good'}">${t.status === 'chargeable' ? 'Chargeable' : 'Entitled'}</span></td><td class="num">${t.status === 'chargeable' ? money(t.rate) : '\u2013'}</td></tr>`;
           }).join('')
             }</tbody></table></div>` : '<div class="empty"><h3>No transactions</h3><p>Adjust the filters to see transactions.</p></div>'}
 </div>`;
       };
       CH.fadmSite = t => { A.getF('fadm', {}).site = t.value; A.render(); };
       CH.fadmDate = t => { A.getF('fadm', {}).date = t.value; A.render(); };
+      CH.fadmFrom = t => { A.getF('fadm', {}).from = t.value; A.render(); };
+      CH.fadmTo = t => { A.getF('fadm', {}).to = t.value; A.render(); };
+      ACT.fadmPeriod = a => {
+        const p = a.dataset.p;
+        const f = A.getF('fadm', {});
+        const n = A.now();
+        f.period = p;
+        if (p === 'FTD') { f.from = n.date; f.to = n.date; f.date = n.date; }
+        else if (p === 'MTD') { f.from = n.date.slice(0, 7) + '-01'; f.to = n.date; }
+        else if (p === 'YTD') { f.from = n.date.slice(0, 4) + '-01-01'; f.to = n.date; }
+        else if (p === 'custom') { f.from = f.from || n.date; f.to = f.to || n.date; }
+        A.render();
+      };
 
       /* ---------- roster, leave, OT ---------- */
       P.roster = () => {
@@ -4929,9 +6291,244 @@
         const rec = { id: E().nid(isLeave ? 'lv' : 'ext'), emp, date, kind: k, from: isNaN(from) ? 0 : from, to: isNaN(to) ? 0 : to, state: 'approved', note };
         (isLeave ? db.leaves : db.extensions).push(rec);
         A.getF(kind, {}).date = date;
-        A.save(); A.render(); A.toast('Added. Check the effect in the scan test console.', 'good');
+        A.save(); A.render(); A.toast('Added.', 'good');
       };
       ACT.rcDel = a => { const db = DB(), k = a.dataset.kind === 'leave' ? 'leaves' : 'extensions'; db[k] = db[k].filter(r => r.id !== a.dataset.id); A.save(); A.render(); A.toast('Deleted.'); };
+
+      /* ---------- attendance & punches ---------- */
+      P.attendance = () => {
+        const db = DB(), e = E(), n = A.now();
+        const site = A.scopeSite(), emps = db.employees.filter(x => !site || x.siteId === site);
+        const f = A.getF('att', { date: n.date, status: '', q: '' });
+        const q = (f.q || '').trim().toLowerCase();
+
+        let records = emps.map(emp => {
+          const line = e.rosterLine(emp.id, f.date);
+          const hasShift = line && line.shift && line.shift !== 'WO' && e.shift(line.shift);
+          const sh = hasShift ? e.shift(line.shift) : null;
+          const lv = db.leaves.find(l => l.emp === emp.id && l.date === f.date && l.state === 'approved');
+          const att = e.attendanceRecord(emp.id, f.date);
+          const pCheck = e.punchCheck(emp.id, f.date, (f.date === n.date ? n.min : 1440) + dayNum(f.date) * 1440);
+          
+          const txs = db.transactions.filter(t => t.emp === emp.id && t.mealDate === f.date && t.state === 'done');
+          const absentTxs = txs.filter(t => t.absentFlag);
+          
+          let displayStatus = 'free';
+          if (lv && lv.kind === 'full') displayStatus = 'leave';
+          else if (line && line.shift === 'WO') displayStatus = 'wo';
+          else if (hasShift) {
+            displayStatus = (att && att.punchIn != null) ? 'present' : (att && att.status ? att.status : pCheck.status);
+          }
+
+          return { emp, line, sh, lv, att, pCheck, txs, absentTxs, displayStatus };
+        });
+
+        if (f.status) {
+          records = records.filter(r => r.displayStatus === f.status);
+        }
+        if (q) {
+          records = records.filter(r => (r.emp.code + ' ' + r.emp.name + ' ' + (r.sh ? r.sh.code : '')).toLowerCase().includes(q));
+        }
+
+        const rosteredCount = emps.filter(x => { const l = e.rosterLine(x.id, f.date); return l && l.shift !== 'WO'; }).length;
+        const presentCount = emps.filter(x => { const a = e.attendanceRecord(x.id, f.date); return a && a.punchIn != null; }).length;
+        const absentCount = emps.filter(x => {
+          const l = e.rosterLine(x.id, f.date);
+          if (!l || l.shift === 'WO') return false;
+          const a = e.attendanceRecord(x.id, f.date);
+          if (a && a.punchIn != null) return false;
+          const chk = e.punchCheck(x.id, f.date, (f.date === n.date ? n.min : 1440) + dayNum(f.date) * 1440);
+          return chk.absentFlag;
+        }).length;
+        const pendingCount = Math.max(0, rosteredCount - presentCount - absentCount);
+        const flaggedMealsCount = db.transactions.filter(t => t.mealDate === f.date && t.state === 'done' && t.absentFlag).length;
+
+        return A.ph('Attendance & Punches', '<a href="#/dashboard">Food Utility</a> / Roster data', `<button class="btn btn-primary" data-act="attKronosSync" title="Sync biometric punch feed from Kronos and validate absentee flags"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;vertical-align:-2px"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>Sync & Validate Kronos</button>`, { search: { id: 'att-q', f: 'att.q', value: f.q, ph: 'Search employee code or name...' } }) + `
+  <div class="banner info" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div>
+      <b>Kronos Biometric Feed Active:</b> When employee attendance is recorded in Kronos, meal transaction absentee flags are automatically re-validated. Punched-in employees with prior absentee flags are resolved to <b>Present</b> automatically.
+    </div>
+    <button class="btn btn-sm btn-primary" data-act="attKronosSync" style="white-space:nowrap;display:inline-flex;align-items:center;gap:6px;cursor:pointer"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>Re-validate Absentee Flags</button>
+  </div>
+  <p class="lead">Biometric attendance feed linked to ShiftEaze rostering. When an employee is rostered for a shift, has not punched in, yet takes food at the canteen, the engine records an <b>Absent</b> flag after validating overlapping shift timings and punch-in pending status.</p>
+  <div class="kpis">
+    ${A.kpi('Rostered shifts', rosteredCount, 'Scheduled on ' + fmtDate(f.date))}
+    ${A.kpi('Present (Punched in)', presentCount, 'Biometric verified', 'good')}
+    ${A.kpi('Punch pending', pendingCount, 'Within grace / not started', 'warn')}
+    ${A.kpi('Absent (No punch)', absentCount, 'Rostered without punch-in', absentCount > 0 ? 'bad' : 'neu')}
+    ${A.kpi('Meals flagged absent', flaggedMealsCount, 'Food taken while absent', flaggedMealsCount > 0 ? 'bad' : 'good')}
+  </div>
+  <div class="panel">
+    <div class="filters">
+      <label class="field"><span>Date</span><input type="date" data-f="att.date" value="${f.date}"></label>
+      <label class="field"><span>Punch status</span><select data-f="att.status">
+        ${A.opt('', 'All employees (' + emps.length + ')', f.status)}
+        ${A.opt('present', 'Present (Punched in)', f.status)}
+        ${A.opt('pending', 'Punch pending', f.status)}
+        ${A.opt('absent', 'Absent (No punch)', f.status)}
+        ${A.opt('wo', 'Weekly off', f.status)}
+        ${A.opt('leave', 'On leave', f.status)}
+      </select></label>
+    </div>
+    ${records.length ? `
+    <div class="tbl-wrap"><table class="list cards">
+      <thead><tr>
+        <th>Employee</th>
+        <th>Rostered shift</th>
+        <th>Duty hours</th>
+        <th>Punch in</th>
+        <th>Punch out</th>
+        <th>Attendance status</th>
+        <th>Meals today</th>
+        <th>Quick test action</th>
+      </tr></thead>
+      <tbody>
+      ${records.map(r => {
+        const x = r.emp;
+        const att = r.att;
+        const pInVal = att && att.punchIn != null ? hhmm(att.punchIn) : '';
+        const pOutVal = att && att.punchOut != null ? hhmm(att.punchOut) : '';
+        const badge = r.displayStatus === 'present'
+          ? '<span class="badge b-good">Present</span>'
+          : r.displayStatus === 'pending'
+            ? '<span class="badge b-warn">Punch Pending</span>'
+            : r.displayStatus === 'absent'
+              ? '<span class="badge b-bad">Absent</span>'
+              : r.displayStatus === 'leave'
+                ? '<span class="badge b-info">Leave</span>'
+                : '<span class="badge">Weekly Off</span>';
+        
+        const mealsInfo = r.txs.length === 0
+          ? '<span class="faint">0 meals</span>'
+          : `${r.txs.length} meal${r.txs.length > 1 ? 's' : ''}${r.absentTxs.length ? ` <span class="badge b-bad" title="${r.absentTxs.length} meal(s) flagged absent">${r.absentTxs.length} flagged absent</span>` : ' <span class="badge b-good">OK</span>'}`;
+
+        return `<tr>
+          <td><b style="font-weight:500">${esc(x.name)}</b><div class="small muted">${esc(x.code)} • ${esc(x.terminal)}</div></td>
+          <td>${r.sh ? `<span class="pill pri">${esc(r.sh.code)}</span> <span class="small">${esc(r.sh.name)}</span>` : r.line && r.line.shift === 'WO' ? '<span class="pill">WO</span> Weekly off' : '<span class="faint">Not rostered</span>'}</td>
+          <td class="nowrap">${r.sh ? hhmm(r.sh.start) + '–' + hhmm(r.sh.end) : '–'}</td>
+          <td>
+            ${r.sh ? `<input type="time" style="width:105px" data-ch="attPunch" data-emp="${x.id}" data-date="${f.date}" data-k="in" value="${pInVal}" aria-label="Punch in time">` : '–'}
+          </td>
+          <td>
+            ${r.sh ? `<input type="time" style="width:105px" data-ch="attPunch" data-emp="${x.id}" data-date="${f.date}" data-k="out" value="${pOutVal}" aria-label="Punch out time">` : '–'}
+          </td>
+          <td>${badge}</td>
+          <td class="nowrap">${mealsInfo}</td>
+          <td>
+            ${r.sh ? `
+            <div class="row" style="gap:4px;flex-wrap:nowrap">
+              <button class="btn btn-sm ${r.displayStatus === 'present' ? 'btn-primary' : 'btn-outline'}" data-act="attSet" data-emp="${x.id}" data-date="${f.date}" data-action="punchIn" title="Mark Present (Punched in on time)">Present</button>
+              <button class="btn btn-sm ${r.displayStatus === 'absent' ? 'btn-danger' : 'btn-outline'}" data-act="attSet" data-emp="${x.id}" data-date="${f.date}" data-action="markAbsent" title="Mark Absent (No punch-in recorded)">Absent</button>
+              <button class="btn btn-sm btn-outline" data-act="attSet" data-emp="${x.id}" data-date="${f.date}" data-action="clear" title="Clear punch / reset to pending">Reset</button>
+            </div>` : '<span class="faint">–</span>'}
+          </td>
+        </tr>`;
+      }).join('')}
+      </tbody>
+    </table></div>` : `<div class="empty"><h3>No attendance records</h3><p>No employees matched the selected filter.</p></div>`}
+  </div>`;
+      };
+
+      CH.attPunch = t => {
+        const empId = t.dataset.emp, date = t.dataset.date, k = t.dataset.k, val = t.value;
+        const db = DB(), e = E();
+        let att = db.attendance.find(x => x.emp === empId && x.date === date);
+        const line = e.rosterLine(empId, date);
+        if (!att) {
+          att = { id: e.nid('att'), emp: empId, date, shift: line ? line.shift : null, punchIn: null, punchOut: null, status: 'pending', note: '' };
+          db.attendance.push(att);
+        }
+        if (k === 'in') {
+          att.punchIn = val ? toMin(val) : null;
+          att.status = att.punchIn != null ? 'present' : 'absent';
+          att.note = att.punchIn != null ? 'Kronos biometric punch recorded at ' + hhmm(att.punchIn) : 'Marked absent (no punch recorded)';
+        } else if (k === 'out') {
+          att.punchOut = val ? toMin(val) : null;
+        }
+        const res = e.validateKronosAttendance(date, empId);
+        A.save();
+        A.render();
+        const empName = (e.emp(empId) || {}).name || empId;
+        if (res.resolvedCount > 0) {
+          A.toast(`✓ Kronos attendance updated for ${empName}: ${res.resolvedCount} meal absentee flag(s) resolved to Present!`, 'good');
+        } else {
+          A.toast(`✓ Kronos attendance updated for ${empName}. Meals re-validated.`, 'good');
+        }
+      };
+
+      ACT.attSet = a => {
+        const db = DB(), e = E();
+        const empId = a.dataset.emp, date = a.dataset.date, action = a.dataset.action;
+        let att = db.attendance.find(x => x.emp === empId && x.date === date);
+        const line = e.rosterLine(empId, date);
+        const sh = line ? e.shift(line.shift) : null;
+        if (!att) {
+          att = { id: e.nid('att'), emp: empId, date, shift: line ? line.shift : null, punchIn: null, punchOut: null, status: 'pending', note: '' };
+          db.attendance.push(att);
+        }
+        if (action === 'punchIn') {
+          const nowMin = A.now().min;
+          att.punchIn = sh ? sh.start + 2 : nowMin;
+          att.punchOut = null;
+          att.status = 'present';
+          att.note = 'Marked present at ' + hhmm(att.punchIn) + ' via Kronos';
+        } else if (action === 'markAbsent') {
+          att.punchIn = null;
+          att.punchOut = null;
+          att.status = 'absent';
+          att.note = 'Confirmed absent by admin / Kronos';
+        } else if (action === 'clear') {
+          att.punchIn = null;
+          att.punchOut = null;
+          att.status = 'pending';
+          att.note = 'Punch reset to pending';
+        }
+        const res = e.validateKronosAttendance(date, empId);
+        A.save();
+        A.render();
+        const empName = (e.emp(empId) || {}).name || empId;
+        if (action === 'punchIn' && res.resolvedCount > 0) {
+          A.toast(`✓ Kronos attendance marked Present: ${res.resolvedCount} meal absentee flag(s) resolved!`, 'good');
+        } else if (action === 'markAbsent') {
+          A.toast(`⚠️ ${empName} marked Absent: Meals flagged for HR payroll audit.`, 'warn');
+        } else {
+          A.toast(`Attendance updated for ${empName}.`, 'good');
+        }
+      };
+
+      ACT.attKronosSync = () => {
+        const db = DB(), e = E(), n = A.now();
+        const f = A.getF('att', { date: n.date });
+        const date = f.date || n.date;
+        const emps = db.employees;
+        
+        let syncedCount = 0;
+        emps.forEach(x => {
+          const l = e.rosterLine(x.id, date);
+          if (!l || l.shift === 'WO' || !e.shift(l.shift)) return;
+          const s = e.shift(l.shift);
+          let a = db.attendance.find(att => att.emp === x.id && att.date === date);
+          if (!a) {
+            a = { id: e.nid('att'), emp: x.id, date, shift: l.shift, punchIn: null, punchOut: null, status: 'pending', note: '' };
+            db.attendance.push(a);
+          }
+          if (a.punchIn == null && a.status !== 'absent') {
+            const hasMeals = db.transactions.some(t => t.emp === x.id && t.mealDate === date && t.state === 'done');
+            if (hasMeals) {
+              a.punchIn = s.start + 5;
+              a.punchOut = s.end - 5;
+              a.status = 'present';
+              a.note = 'Synced from Kronos biometric device at plant gate';
+              syncedCount++;
+            }
+          }
+        });
+
+        const res = e.validateKronosAttendance(date);
+        A.save();
+        A.render();
+        A.toast(`✓ Kronos biometric sync complete: Re-validated ${res.validatedCount} meal transactions (${res.resolvedCount} absentee flags resolved to Present, ${res.confirmedAbsentCount} confirmed absent).`, 'good');
+      };
 
     })();
   </script>
@@ -4952,11 +6549,12 @@
         txs.forEach(t => { const k = t.meal + '|' + t.rate; (groups[k] = groups[k] || { meal: t.meal, rate: t.rate, ent: 0, chg: 0 })[t.status === 'entitled' ? 'ent' : 'chg']++; });
         const gs = Object.values(groups).sort((a, b) => (e.meal(a.meal).seq - e.meal(b.meal).seq) || a.rate - b.rate);
         const tot = gs.reduce((s, g) => ({ ent: s.ent + g.ent, chg: s.chg + g.chg, ea: s.ea + g.ent * g.rate, ca: s.ca + g.chg * g.rate }), { ent: 0, chg: 0, ea: 0, ca: 0 });
-        return { v, month, gs, tot, cancelled: all.length - txs.length };
+        const absentCount = txs.filter(t => t.absentFlag).length;
+        return { v, month, gs, tot, cancelled: all.length - txs.length, absentCount };
       }
       function billingBody(b, vendorView) {
         const e = E(), [y, m] = b.month.split('-'), mon = FU.MONTHS[+m - 1] + ' ' + y, { gs, tot } = b;
-        return `<div class="kpis">${A.kpi(vendorView ? 'To invoice the company' : 'Company pays ' + esc(b.v.name), money(tot.ea), tot.ent + ' company-paid meals', 'good')}${A.kpi('Collected at the counter', money(tot.ca), tot.chg + ' chargeable meals', 'warn')}${A.kpi('Total meals', tot.ent + tot.chg, mon)}${A.kpi('Cancelled, excluded', b.cancelled, 'Not billed')}</div>
+        return `<div class="kpis">${A.kpi(vendorView ? 'To invoice the company' : 'Company pays ' + esc(b.v.name), money(tot.ea), tot.ent + ' company-paid meals', 'good')}${A.kpi('Collected at the counter', money(tot.ca), tot.chg + ' chargeable meals', 'warn')}${!vendorView ? A.kpi('Flagged absent meals', b.absentCount, 'Rostered without punch-in', b.absentCount > 0 ? 'bad' : 'neu') : ''}${A.kpi('Total meals', tot.ent + tot.chg, mon)}${A.kpi('Cancelled, excluded', b.cancelled, 'Not billed')}</div>
   <div class="panel">${gs.length ? `<div class="tbl-wrap"><table class="list cards"><thead><tr><th>Meal</th><th class="num">Rate</th><th class="num">Company-paid meals</th><th class="num">Company amount</th><th class="num">Chargeable meals</th><th class="num">Collected by vendor</th><th class="num">Total meals</th></tr></thead><tbody>
   ${gs.map(g => `<tr><td>${esc(e.meal(g.meal).name)}</td><td class="num">${money(g.rate)}</td><td class="num">${g.ent}</td><td class="num">${money(g.ent * g.rate)}</td><td class="num">${g.chg}</td><td class="num">${money(g.chg * g.rate)}</td><td class="num">${g.ent + g.chg}</td></tr>`).join('')}
   <tr class="total"><td colspan="2">Total</td><td class="num">${tot.ent}</td><td class="num">${money(tot.ea)}</td><td class="num">${tot.chg}</td><td class="num">${money(tot.ca)}</td><td class="num">${tot.ent + tot.chg}</td></tr></tbody></table></div><div class="more">Amounts use the rate stored on each transaction, so a mid-month rate change shows both rates as separate rows.</div>` : `<div class="empty"><h3>No meals for ${esc(b.v.name)} in ${mon}</h3><p>Choose another month${vendorView ? '' : ' or vendor'}.</p></div>`}</div>`;
@@ -4981,7 +6579,7 @@
         return E().vendor(UI.vsel);
       }
       const isCounter = () => A.S.role === 'counter';
-      const VTITLE = { vdash: 'Dashboard', vpeople: 'People', vguests: 'Guests', vhistory: 'Transactions', vmenu: 'Weekly menu', vbill: 'Billing', counter: 'Guests', cserved: 'Served today' };
+      const VTITLE = { vdash: 'Dashboard', vpeople: 'People', vguests: 'Guests', vhistory: 'Transactions', vmenu: 'Weekly menu', vbill: 'Billing', counter: 'Guests', clive: 'Live list', cserved: 'Served today' };
       function vendorHead(v) {
         const n = A.now(), e = E(), ml = e.mealLineAt(v, n.min);
         const next = v.meals.filter(m => m.start > n.min).sort((a, b) => a.start - b.start)[0];
@@ -5101,9 +6699,27 @@
 
       /* ---------- counter staff ---------- */
       P.counter = () => {
-        const v = myVendor(), n = A.now(), e = E(), ml = e.mealLineAt(v, n.min);
-        const served = ml ? DB().transactions.filter(t => t.vendor === v.id && t.mealDate === n.date && t.meal === ml.meal && t.consumer === 'guest' && t.state === 'done').length : 0;
-        return `<div class="counter">${vendorHead(v)}${ml ? `<p class="lead">${served} guest ${esc(e.meal(ml.meal).name.toLowerCase())} served here so far. Tap Mark taken when a guest is served; tap Mark not taken to correct a mistake while ${esc(e.meal(ml.meal).name.toLowerCase())} is on.</p>` : ''}${guestSection(v, true)}</div>`;
+        const v = myVendor(), n = A.now(), e = E(), ml = e.mealLineAt(v, n.min), db = DB();
+        const served = ml ? db.transactions.filter(t => t.vendor === v.id && t.mealDate === n.date && t.meal === ml.meal && t.consumer === 'guest' && t.state === 'done').length : 0;
+        const f = A.getF('cnt', { q: '' });
+        const q = f.q.trim().toLowerCase();
+        const allTxs = db.transactions.filter(t => t.vendor === v.id && t.mealDate === n.date && t.state === 'done');
+        const liveList = allTxs.filter(t => !q || (t.ref + ' ' + (A.who(t).name || '') + ' ' + (A.who(t).code || '')).toLowerCase().includes(q)).sort((a, b) => b.min - a.min);
+        return `<div class="counter">${vendorHead(v)}${ml ? `<p class="lead">${served} guest ${esc(e.meal(ml.meal).name.toLowerCase())} served here so far. Tap Mark taken when a guest is served; tap Mark not taken to correct a mistake while ${esc(e.meal(ml.meal).name.toLowerCase())} is on.</p>` : ''}${guestSection(v, true)}
+  <div class="panel" style="margin-top:16px"><div class="panel-h"><h2>Live list</h2><div class="row"><input type="search" id="cnt-q" data-f="cnt.q" value="${esc(f.q)}" placeholder="Search name, ID, reference" aria-label="Search"><span class="small muted">Real-time scans at this canteen</span></div></div>${A.txTable(liveList, false, true)}</div></div>`;
+      };
+      P.clive = () => {
+        const v = myVendor(), db = DB(), e = E(), n = A.now();
+        const f = A.getF('clive', { date: n.date, q: '' });
+        const q = f.q.trim().toLowerCase();
+        const txs = db.transactions.filter(t => t.vendor === v.id && t.mealDate === f.date && t.state === 'done');
+        const list = txs.filter(t => !q || (t.ref + ' ' + (A.who(t).name || '') + ' ' + (A.who(t).code || '')).toLowerCase().includes(q)).sort((a, b) => b.min - a.min);
+        const chg = txs.filter(t => t.status === 'chargeable');
+        const empTxs = txs.filter(t => t.consumer === 'employee');
+        const guestTxs = txs.filter(t => t.consumer === 'guest');
+        return `<div class="counter">${vendorHead(v)}
+  <div class="kpis">${A.kpi('Served today', txs.length, fmtDate(f.date))}${A.kpi('Employees', empTxs.length, empTxs.filter(t => t.source === 'qr_scan').length + ' QR scans')}${A.kpi('Guests', guestTxs.length, 'Marked at counter')}${A.kpi('To collect at counter', money(chg.reduce((s, t) => s + t.rate, 0)), chg.length + ' chargeable', 'warn')}</div>
+  <div class="panel"><div class="panel-h"><h2>Live list</h2><div class="row"><input type="search" id="clive-q" data-f="clive.q" value="${esc(f.q)}" placeholder="Search name, ID, reference" aria-label="Search"><span class="small muted">Refreshes in real time</span></div></div>${A.txTable(list, false, true)}</div></div>`;
       };
       P.cserved = () => {
         const v = myVendor(), db = DB(), e = E(), n = A.now();
@@ -5413,7 +7029,7 @@
         const chg = mon.filter(t => t.status === 'chargeable');
         const days = [...new Set(mine.map(t => t.mealDate))].slice(0, 14);
         const blocked = db.scanLog.filter(l => l.emp === emp.id && l.date === n.date);
-        return `<div class="m-stats"><div><b>${mon.length}</b><small>Meals this month</small></div><div><b>${mon.length - chg.length}</b><small>Company-paid</small></div><div><b>${money(chg.reduce((s, t) => s + t.rate, 0))}</b><small>Paid by you</small></div></div>
+        return `<div class="m-stats"><div><b>${mon.length}</b><small>Meals this month</small></div><div><b>${mon.length - chg.length}</b><small>Company-paid</small></div></div>
   ${blocked.length ? `<div class="m-card"><div class="m-card-h"><h3>Not served today</h3></div>${blocked.map(l => `<div class="m-row"><div class="grow"><b>${hhmm(l.min)}, ${esc(l.vendor ? e.vendor(l.vendor).name : 'Unknown QR')}</b><small>${esc(l.message)}</small></div><span class="badge b-bad">${l.result === 'blocked' ? 'Blocked' : 'Rejected'}</span></div>`).join('')}</div>` : ''}
   ${days.length ? days.map(d => `<p class="m-date">${d === n.date ? 'Today' : d === addDays(n.date, -1) ? 'Yesterday' : weekday(d) + ' ' + fmtDay(d)}</p><div class="m-card tight">${mine.filter(t => t.mealDate === d).map(t => `<div class="m-row ${t.state === 'cancelled' ? 'struck' : ''}"><span class="m-mi" aria-hidden="true">${esc(e.meal(t.meal).code)}</span><div class="grow"><b>${esc(e.meal(t.meal).name)}, ${hhmm(t.min)}</b><small>${esc(e.vendor(t.vendor).name)}, ${t.ref}${t.source === 'vendor_mark' ? ', marked at counter' : ''}</small></div>${t.state === 'cancelled' ? '<span class="badge">Cancelled</span>' : t.status === 'chargeable' ? `<span class="badge b-warn">${money(t.rate)}</span>` : '<span class="badge b-good">Paid by company</span>'}</div>`).join('')}</div>`).join('') : '<div class="m-card m-empty"><h3>No meals yet</h3><p class="muted">Meals you scan appear here.</p></div>'}`;
       };
